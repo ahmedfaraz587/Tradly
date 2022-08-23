@@ -18,5 +18,6 @@ const SimpleButton = props => {
 export default SimpleButton;
 
 const styles = StyleSheet.create({
-  button: {height: 50, alignItems: 'center', justifyContent: 'center'},
+  button: {height: 50, alignItems: 'center', justifyContent: 'center',
+},
 });
