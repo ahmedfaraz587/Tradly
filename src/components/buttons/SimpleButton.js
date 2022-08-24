@@ -1,23 +1,29 @@
 import React from 'react';
-import {Button} from 'react-native-paper';
-import {StyleSheet} from 'react-native';
+import styled from 'styled-components';
+import {theme} from '../../ui';
+
+const Button = styled.TouchableOpacity(({buttonColor}) => ({
+  height: theme.sizes.buttonHeight,
+  backgroundColor: buttonColor,
+  justifyContent: 'center',
+  alignItems: 'center',
+  borderRadius: theme.sizes.borderRadius,
+  marginTop: 5,
+  marginBottom: 5,
+}));
+
+const ButtonText = styled.Text({
+  color: props => props.textColor,
+  fontSize: theme.fontSize.mediumText,
+  fontFamily: theme.fontFamilies.largeText,
+});
 
 const SimpleButton = props => {
   return (
-    <Button
-      mode="contained"
-      onPress={props.onPress}
-      buttonColor={props.buttonColor}
-      textColor={props.textColor}
-      style={styles.button}>
-      {props.text}
+    <Button buttonColor={props.buttonColor} onPress={props.onPress}>
+      <ButtonText textColor={props.textColor}>{props.text}</ButtonText>
     </Button>
   );
 };
 
 export default SimpleButton;
-
-const styles = StyleSheet.create({
-  button: {height: 50, alignItems: 'center', justifyContent: 'center',
-},
-});

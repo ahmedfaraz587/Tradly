@@ -10,36 +10,38 @@ const colors = {
   lightGrey: '#D8D8D8',
 };
 
+const sizes = {
+  buttonHeight:48,
+  textInputHeight:44,
+  smallButtonHeight:24,
+  borderRadius: 24,
+}
+
 const spacesFrom1 = Array.from({length: 64}, (_, i) => i + 1);
 const spaces = [0.5, ...spacesFrom1];
 const spacesMultiplier = spaces.map(space => space * 4);
 
 const fontWeights = {
-  hairline: '100',
-  thin: '200',
-  light: '300',
   normal: '400',
   medium: '500',
   semibold: '600',
   bold: '700',
-  extrabold: '800',
-  black: '900',
 };
 
 const fontSize = {
-  buttonText: 18,
-  largeTitle: 32,
-  mediumTitle: 24,
-  xmediumTitle: 22,
-  smallTitle: 20,
-  largeText: 30,
-  xMediumText: 23,
-  mediumText: 20,
-  normalText: 18,
-  xnormalText: 17,
-  smallText: 16,
-  xsmallText: 15,
-  xxsmallText: 14,
+  buttonText_18: 18,
+  largeTitle_32: 32,
+  mediumTitle_24: 24,
+  xmediumTitle_22: 22,
+  smallTitle_20: 20,
+  largeText_26: 26,
+  xMediumText_23: 23,
+  mediumText_20: 20,
+  normalText_18: 18,
+  xnormalText_17: 17,
+  smallText_16: 16,
+  xsmallText_15: 15,
+  xxsmallText_14: 14,
 
 };
 
@@ -122,4 +124,5 @@ export const theme = {
   dimensions,
   animations,
   fontSize,
+  sizes,
 };
