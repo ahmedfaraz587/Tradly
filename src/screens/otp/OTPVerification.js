@@ -18,11 +18,6 @@ const OTPView = styled.View({
   padding: 10,
 });
 
-const SocialLoginButton = styled.TouchableOpacity`
-  margin-top: 50;
-  margin-bottom: 10;
-`;
-
 const Heading = styled.Text({
   fontFamily: theme.fontFamilies.largeText,
   fontSize: theme.fontSize.mediumTitle_24,
@@ -39,14 +34,7 @@ const NormalText = styled.Text`
   margin-bottom: 10;
 `;
 
-const LoginSocialNetwork = styled.Text`
-  font-size: ${theme.fontSize.normalText_18};
-  color: ${theme.colors.white};
-  font-family: ${theme.fontFamilies.text};
-  text-align: center;
-`;
-
-const OTPVerification = () => {
+const OTPVerification = ({navigation}) => {
   const [otp, setOtp] = useState('');
   return (
     <Container>
@@ -70,6 +58,7 @@ const OTPVerification = () => {
         text="Verify"
         buttonColor={theme.colors.white}
         textColor={theme.colors.primary}
+        onPress={() => navigation.navigate('HomeNavigation')}
       />
     </Container>
   );

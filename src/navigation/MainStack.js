@@ -10,7 +10,7 @@ const MainStack = () => {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator
-      initialRouteName="Splash"
+      initialRouteName="HomeNavigation"
       screenOptions={{
         headerShown: false,
       }}>
@@ -18,7 +18,7 @@ const MainStack = () => {
       <Stack.Screen name="OnBoarding" component={OnBoarding} />
       <Stack.Screen name="Auth" component={Auth} />
       <Stack.Screen name="OTPNav" component={OTPNav} />
-      <Stack.Screen name="HomeNav" component={HomeNav} />
+      <Stack.Screen name="HomeNavigation" component={HomeNav} />
     </Stack.Navigator>
   );
 };

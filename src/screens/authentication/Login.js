@@ -76,7 +76,7 @@ const Login = ({navigation}) => {
         text="Login"
         buttonColor={theme.colors.white}
         textColor={theme.colors.primary}
-        onPress={() => navigation.navigate('OTPNav')}
+        onPress={() => navigation.navigate('HomeNavigation')}
       />
       <ForgotPasswordButton>
         <ForgotText>Forgot your password?</ForgotText>

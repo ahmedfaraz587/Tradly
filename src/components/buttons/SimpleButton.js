@@ -15,7 +15,7 @@ const Button = styled.TouchableOpacity(({buttonColor}) => ({
 const ButtonText = styled.Text({
   color: props => props.textColor,
   fontSize: theme.fontSize.mediumText,
-  fontFamily: theme.fontFamilies.largeText,
+  fontFamily: theme.fontFamilies.smallHeading,
 });
 
 const SimpleButton = props => {

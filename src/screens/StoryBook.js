@@ -4,7 +4,6 @@ import SimpleButton from '../components/buttons/SimpleButton';
 import TextInputOutline from '../components/textinputs/TextInputOutline';
 import styled from 'styled-components';
 import {theme} from '../ui';
-import Text from '../components/centeredtext';
 
 const Container = styled.View({
   flex: 1,
@@ -26,11 +25,6 @@ const StoryBook = () => {
         <Margin />
         <TextInputOutline placeholder="Enter email" onTextChange={() => {}} />
         <Margin />
-        <Text
-          text="My name is ahmed and i am react native developer"
-          fontSize={theme.fontSize.largeTitle}
-          fontFamily={theme.fontFamilies.heading}
-        />
       </Container>
     </ScrollView>
   );

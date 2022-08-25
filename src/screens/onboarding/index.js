@@ -30,17 +30,23 @@ const OnBoarding = ({navigation}) => {
       pages={[
         {
           backgroundColor: '#fff',
-          image: <Image source={appImages.ob1} resizeMode="contain" />,
+          image: (
+            <Image source={appImages.onboardingImage1} resizeMode="contain" />
+          ),
           title: 'Donate, Invest & Support infrastructure projects',
         },
         {
           backgroundColor: '#fff',
-          image: <Image source={appImages.ob2} resizeMode="contain" />,
+          image: (
+            <Image source={appImages.onboardingImage2} resizeMode="contain" />
+          ),
           title: 'Connecting NGOs, Social Enterprises with Communities',
         },
         {
           backgroundColor: '#fff',
-          image: <Image source={appImages.ob3} resizeMode="contain" />,
+          image: (
+            <Image source={appImages.onboardingImage3} resizeMode="contain" />
+          ),
           title: 'Empowering Artisans, Farmers & Micro Business',
         },
       ]}

@@ -6,16 +6,17 @@ const colors = {
   black: '#000000',
   primary: '#33907C',
   darkGrey50: '#4F4F4F',
-  darkGrey80:'#333A42',
+  darkGrey80: '#333A42',
   lightGrey: '#D8D8D8',
+  background: '#F6F9FF',
 };
 
 const sizes = {
-  buttonHeight:48,
-  textInputHeight:44,
-  smallButtonHeight:24,
+  buttonHeight: 48,
+  textInputHeight: 44,
+  smallButtonHeight: 26,
   borderRadius: 24,
-}
+};
 
 const spacesFrom1 = Array.from({length: 64}, (_, i) => i + 1);
 const spaces = [0.5, ...spacesFrom1];
@@ -40,9 +41,9 @@ const fontSize = {
   normalText_18: 18,
   xnormalText_17: 17,
   smallText_16: 16,
-  xsmallText_15: 15,
+  xsmallText_12: 12,
   xxsmallText_14: 14,
-
+  xxxsmallText_11: 11,
 };
 
 const paddings = {
