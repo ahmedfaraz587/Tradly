@@ -87,7 +87,7 @@ const Signup = ({navigation}) => {
         text="Sign up"
         buttonColor={theme.colors.white}
         textColor={theme.colors.primary}
-        onPress={() => navigation.navigate('OTPNav')}
+        onPress={() => navigation.navigate('BottomNavigation')}
       />
       <SigninRow>
         <HaveAccountText>Already have an account?</HaveAccountText>

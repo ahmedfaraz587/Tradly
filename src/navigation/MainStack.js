@@ -4,13 +4,16 @@ import SplashScreen from '../screens/splash';
 import OnBoarding from '../screens/onboarding';
 import Auth from '../screens/authentication';
 import OTPNav from '../screens/otp';
-import HomeNav from '../screens/home';
+import BottomNavigation from './BottomNavigation';
+import ProductDetail from '../screens/productDetails';
+import Wishlist from '../screens/wishlist';
+import CheckoutNavigation from '../screens/checkout';
 
 const MainStack = () => {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator
-      initialRouteName="HomeNavigation"
+      initialRouteName="BottomNavigation"
       screenOptions={{
         headerShown: false,
       }}>
@@ -18,7 +21,10 @@ const MainStack = () => {
       <Stack.Screen name="OnBoarding" component={OnBoarding} />
       <Stack.Screen name="Auth" component={Auth} />
       <Stack.Screen name="OTPNav" component={OTPNav} />
-      <Stack.Screen name="HomeNavigation" component={HomeNav} />
+      <Stack.Screen name="BottomNavigation" component={BottomNavigation} />
+      <Stack.Screen name="ProductDetail" component={ProductDetail} />
+      <Stack.Screen name="Wishlist" component={Wishlist} />
+      <Stack.Screen name="CheckoutNavigation" component={CheckoutNavigation} />
     </Stack.Navigator>
   );
 };

@@ -34,7 +34,7 @@ const HeaderCard = props => {
             style={{marginRight: 10}}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={props.onCardPress}>
+        <TouchableOpacity onPress={props.onCartPress}>
           <FontAwesome5 name="shopping-cart" size={24} color="white" />
         </TouchableOpacity>
       </HeaderIconsView>

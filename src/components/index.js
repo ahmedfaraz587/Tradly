@@ -5,6 +5,7 @@ import CatagoryCard from './cards/CatagoryCard';
 import HeaderCard from './cards/HeaderCard';
 import TextInputSearch from './textinputs/TextInputSearch';
 import ProductCard from './cards/ProductCard'
+import HeaderTitleCard from './cards/HeaderTitleCard';
 
 export {
   Spacer,
@@ -15,5 +16,6 @@ export {
   TextInputSearch,
   SmallButton,
   IconButton,
-  ProductCard
+  ProductCard,
+  HeaderTitleCard
 };

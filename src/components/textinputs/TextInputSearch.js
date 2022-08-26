@@ -29,8 +29,11 @@ const TextInputSearch = props => {
       <AntDesign name="search1" size={24} color={theme.colors.primary} />
       <Input
         placeholderTextColor={theme.colors.lightGrey}
-        placeholder="Search"
+        placeholder={props.placeholder}
         onChangeText={props.onChangeText}
+        style={{
+          fontFamily:theme.fontFamilies.largeText
+        }}
       />
     </TextInputView>
   );

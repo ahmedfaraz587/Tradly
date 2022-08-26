@@ -58,7 +58,7 @@ const OTPVerification = ({navigation}) => {
         text="Verify"
         buttonColor={theme.colors.white}
         textColor={theme.colors.primary}
-        onPress={() => navigation.navigate('HomeNavigation')}
+        onPress={() => navigation.navigate('BottomNavigation')}
       />
     </Container>
   );

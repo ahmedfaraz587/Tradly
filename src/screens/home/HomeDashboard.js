@@ -107,7 +107,16 @@ const HomeDashboard = ({navigation}) => {
   );
 
   const renderProduct = ({item}) => (
-    <PressProduct onPress={() => {}}>
+    <PressProduct
+      onPress={() =>
+        navigation.navigate('ProductDetail', {
+          productImage: item.productImage,
+          productName: item.productName,
+          productPrice: item.productPrice,
+          storeName: item.storeName,
+          storeAvatar: item.storeAvatar,
+        })
+      }>
       <ProductCard
         productName={item.productName}
         productImage={item.productImage}
@@ -135,8 +144,12 @@ const HomeDashboard = ({navigation}) => {
   return (
     <Container stickyHeaderIndices={[0]} showsVerticalScrollIndicator={false}>
       <HeaderContainer>
-        <HeaderCard text="Groceries" />
-        <TextInputSearch />
+        <HeaderCard
+          text="Home"
+          onFavoritePress={() => navigation.navigate('Wishlist')}
+          onCartPress={() => navigation.navigate('CheckoutNavigation')}
+        />
+        <TextInputSearch placeholder="Search" />
       </HeaderContainer>
       <CatagoryView>
         <FlatList

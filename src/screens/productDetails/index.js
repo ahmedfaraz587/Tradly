@@ -9,7 +9,7 @@ import { ScrollView } from 'react-native';
 const ProductDetail = ({route, navigation}) => {
   return (
     <Container>
-      <ScrollView stickyHeaderIndices={[1]}>
+      <ScrollView>
         <Image source={route.params.productImage} resizeMode="cover">
           <HeaderView>
             <IconsAlignmentView>
@@ -74,6 +74,13 @@ const ProductDetail = ({route, navigation}) => {
             <PropertyDetail>Lahore</PropertyDetail>
           </TableRow>
         </TableView>
+        <AdditionalDetailsText>Additional Details</AdditionalDetailsText>
+        <TableRow>
+          <PropertyName>Delivery details</PropertyName>
+          <PropertyDetail>
+            Home Delivery Available, Cash On Delivery
+          </PropertyDetail>
+        </TableRow>
       </ScrollView>
 
       <CartButtonView>
@@ -208,4 +215,12 @@ width: 130px;
 const PropertyDetail = styled.Text`
   font-family: ${theme.fontFamilies.text};
   color: ${theme.colors.darkGrey80};
+  width: 50%;
 `;
+
+const AdditionalDetailsText= styled.Text`
+color:${theme.colors.black};
+font-size: ${theme.fontSize.buttonText_18};
+font-family:${theme.fontFamilies.smallHeading};
+padding:15px;
+`

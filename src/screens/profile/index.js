@@ -1,10 +1,10 @@
 import React from 'react'
 import {Text} from 'react-native'
 
-const index = () => {
+const Profile = () => {
      return (
           <Text>index</Text>
      );
 }
 
-export default index;
+export default Profile;

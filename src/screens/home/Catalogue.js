@@ -61,7 +61,7 @@ const Catalogue = props => {
           productName: item.productName,
           productPrice: item.productPrice,
           storeName: item.storeName,
-          storeAvatar:item.storeAvatar,
+          storeAvatar: item.storeAvatar,
         })
       }>
       <ProductCard
@@ -89,7 +89,14 @@ const Catalogue = props => {
           <IconButton icon={icons.category} buttonTitle="Category" />
         </HeaderButtonView>
       </HeaderContainer>
-      <FlatList data={products} renderItem={renderProduct} numColumns={2} />
+      <AlignCenter>
+        <FlatList
+          data={products}
+          renderItem={renderProduct}
+          numColumns={2}
+          showsVerticalScrollIndicator={false}
+        />
+      </AlignCenter>
     </Container>
   );
 };
@@ -131,5 +138,11 @@ const HeaderButtonView = styled.View`
 `;
 
 const PressProduct = styled.TouchableOpacity`
-  margin: 10px;
+  margin: 7px;
+`;
+
+const AlignCenter = styled.View`
+  justify-content: center;
+  align-items: center;
+  flex: 1;
 `;
