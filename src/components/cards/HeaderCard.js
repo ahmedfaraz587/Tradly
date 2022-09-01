@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {theme} from '../../ui';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -43,3 +42,5 @@ const HeaderCard = props => {
 };
 
 export default HeaderCard;
+
+

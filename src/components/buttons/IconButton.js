@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import {theme} from '../../ui';
-import {icons} from '../../utilities/assets';
 
 const IconButton = props => {
   return (

@@ -41,7 +41,7 @@ const Wishlist = ({navigation}) => {
   const renderProduct = ({item}) => (
     <PressProduct
       onPress={() =>
-        props.navigation.navigate('ProductDetail', {
+        navigation.navigate('ProductDetail', {
           productImage: item.productImage,
           productName: item.productName,
           productPrice: item.productPrice,

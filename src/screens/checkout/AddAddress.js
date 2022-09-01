@@ -1,44 +1,81 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {theme} from '../../ui';
-import {HeaderTitleCard,SimpleButton} from '../../components';
+import {HeaderTitleCard, SimpleButton} from '../../components';
 import styled from 'styled-components';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {Platform, ScrollView} from 'react-native';
 
 const AddAddress = ({navigation}) => {
+  const [addressDetail, setAddressDetail] = useState({});
+  const buttonPress = () => {
+    // {
+    // addressDetail.name &&
+    // addressDetail.streetAddress &&
+    // addressDetail.zipcode &&
+    // addressDetail.city
+    // ?
+    navigation.navigate('Mycart', {
+      storeName: addressDetail.name,
+      zipcode: addressDetail.zipcode,
+      city: addressDetail.city,
+      state: addressDetail.state,
+    });
+    //     : alert('Please enter your name');
+    //
+  };
+
   return (
-    <Container>
-      <HeaderTitleCard
-        title="Add a new address"
-        onPress={() => navigation.goBack()}
-      />
-      <AddNewAddressContainer>
-        <MaterialIcons
-          name="my-location"
-          size={20}
-          color={theme.colors.primary}
+    <Container behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      <ScrollView>
+        <HeaderTitleCard
+          title="Add a new address"
+          onPress={() => navigation.goBack()}
         />
-        <CurrentLocationText>Use current location</CurrentLocationText>
-      </AddNewAddressContainer>
-      <MainContainer>
-        <Label>Name</Label>
-        <Input />
-        <Label>Phone</Label>
-        <Input />
-        <Label>Street address</Label>
-        <Input />
-        <Label>City</Label>
-        <Input />
-        <Label>State</Label>
-        <Input />
-        <Label>Zipcode</Label>
-        <Input />
-      </MainContainer>
+        <AddNewAddressContainer>
+          <MaterialIcons
+            name="my-location"
+            size={20}
+            color={theme.colors.primary}
+          />
+          <CurrentLocationText>Use current location</CurrentLocationText>
+        </AddNewAddressContainer>
+        <MainContainer>
+          <Label>Name</Label>
+          <Input
+            onChangeText={e => setAddressDetail({...addressDetail, name: e})}
+          />
+          <Label>Phone</Label>
+          <Input
+            onChangeText={e =>
+              setAddressDetail({...addressDetail, phoneNumber: e})
+            }
+          />
+          <Label>Street address</Label>
+          <Input
+            onChangeText={e =>
+              setAddressDetail({...addressDetail, streetAddress: e})
+            }
+          />
+          <Label>City</Label>
+          <Input
+            onChangeText={e => setAddressDetail({...addressDetail, city: e})}
+          />
+          <Label>State</Label>
+          <Input
+            onChangeText={e => setAddressDetail({...addressDetail, state: e})}
+          />
+          <Label>Zipcode</Label>
+          <Input
+            onChangeText={e => setAddressDetail({...addressDetail, zipcode: e})}
+          />
+        </MainContainer>
+      </ScrollView>
       <ButtonContainer>
         <SimpleButton
           textColor={theme.colors.white}
           buttonColor={theme.colors.primary}
           text="Save"
-          onPress={()=>alert('save')}
+          onPress={buttonPress}
         />
       </ButtonContainer>
     </Container>
@@ -47,7 +84,7 @@ const AddAddress = ({navigation}) => {
 
 export default AddAddress;
 
-const Container = styled.View`
+const Container = styled.KeyboardAvoidingView`
   flex: 1;
   background-color: ${theme.colors.background};
 `;
@@ -66,15 +103,14 @@ const CurrentLocationText = styled.Text`
   margin-left: 10px;
 `;
 
+const MainContainer = styled.View`
+  padding: 20px;
+`;
 const Label = styled.Text`
   font-size: ${theme.fontSize.xxsmallText_14};
   font-family: ${theme.fontFamilies.text};
   color: ${theme.colors.darkGrey50};
   margin-left: 3px;
-`;
-
-const MainContainer = styled.View`
-  padding: 20px;
 `;
 
 const Input = styled.TextInput`
@@ -91,7 +127,5 @@ const ButtonContainer = styled.View`
   padding: 15px;
   background-color: ${theme.colors.white};
   height: 80px;
-  position: absolute;
-  bottom: 0;
   width: 100%;
 `;

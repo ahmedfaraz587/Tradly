@@ -21,6 +21,7 @@ const Input = styled.TextInput`
   margin-left: 10px;
   color: ${theme.colors.darkGrey80};
   flex: 1;
+  font-family: ${theme.fontFamilies.largeText};
 `;
 
 const TextInputSearch = props => {
@@ -31,9 +32,6 @@ const TextInputSearch = props => {
         placeholderTextColor={theme.colors.lightGrey}
         placeholder={props.placeholder}
         onChangeText={props.onChangeText}
-        style={{
-          fontFamily:theme.fontFamilies.largeText
-        }}
       />
     </TextInputView>
   );

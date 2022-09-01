@@ -1,21 +1,39 @@
 import React from 'react';
 import styled from 'styled-components';
 import {theme} from '../../ui';
-import {HeaderTitleCard, SimpleButton} from '../../components';
+import {HeaderTitleCard, SimpleButton, SmallButton} from '../../components';
 import {TouchableOpacity} from 'react-native';
 import {Divider} from 'react-native-paper';
 import {appImages} from '../../utilities/assets';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
-const Mycart = ({navigation}) => {
+const Mycart = ({navigation, route}) => {
   return (
     <Container>
       <HeaderTitleCard title="My Cart" onPress={() => navigation.goBack()} />
-      <AddNewAddressView>
-        <TouchableOpacity onPress={() => navigation.navigate('AddAddress')}>
-          <AddNewAddressText>+Add new address</AddNewAddressText>
-        </TouchableOpacity>
-      </AddNewAddressView>
+      {route.params ? (
+        <AddressView>
+          <AddressContainer>
+            <Address>
+              Delivery to {route.params.storeName} , {route.params.zipcode}
+            </Address>
+            <Address>
+              {route.params.city}, {route.params.state}
+            </Address>
+          </AddressContainer>
+          <SmallButton
+            buttonTitle="change"
+            backgroundColor={theme.colors.primary}
+            textColor={theme.colors.white}
+          />
+        </AddressView>
+      ) : (
+        <AddNewAddressView>
+          <TouchableOpacity onPress={() => navigation.navigate('AddAddress')}>
+            <AddNewAddressText>+Add new address</AddNewAddressText>
+          </TouchableOpacity>
+        </AddNewAddressView>
+      )}
       <CartItemView>
         <CartTopContainer>
           <ImageContainer source={appImages.egg} />
@@ -65,12 +83,29 @@ const Mycart = ({navigation}) => {
         </PriceDetailTableContainer>
       </PriceDetailContainer>
       <ButtonContainer>
-        <SimpleButton
-          textColor={theme.colors.white}
-          buttonColor={theme.colors.primary}
-          text="Continue to payment"
-          disabled={true}
-        />
+        {route.params ? (
+          <SimpleButton
+            textColor={theme.colors.white}
+            buttonColor={theme.colors.primary}
+            text="Continue to payment"
+            onPress={() =>
+              navigation.navigate('Payment', {
+                storeName: route.params.storeName,
+                zipcode: route.params.zipcode,
+                city: route.params.city,
+                state: route.params.state,
+                
+              })
+            }
+          />
+        ) : (
+          <SimpleButton
+            textColor={theme.colors.white}
+            buttonColor={theme.colors.primary}
+            text="Continue to payment"
+            disabled={true}
+          />
+        )}
       </ButtonContainer>
     </Container>
   );
@@ -154,7 +189,6 @@ const PriceDetailContainer = styled.View`
   background-color: ${theme.colors.white};
   height: 180px;
   width: 100%;
-  /* justify-content: center; */
   margin-top: 50px;
   padding: 15px;
 `;
@@ -192,3 +226,22 @@ const ButtonContainer = styled.View`
   bottom: 0;
   width: 100%;
 `;
+
+const AddressView = styled.View`
+  height: 60px;
+  background-color: ${theme.colors.white};
+  width: 100%;
+  margin-bottom: 10px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+`;
+
+const Address = styled.Text`
+  font-size: ${theme.fontSize.xxsmallText_14};
+  font-family: ${theme.fontFamilies.largeText};
+  color: ${theme.colors.darkGrey50};
+  margin-left: 5px;
+`;
+const AddressContainer = styled.View``;

@@ -11,6 +11,8 @@ const Button = styled.TouchableOpacity(({buttonColor,opacity}) => ({
   marginTop: 5,
   marginBottom: 5,
   opacity: opacity,
+  borderWidth:1,
+  borderColor:theme.colors.primary
 }));
 
 const ButtonText = styled.Text({

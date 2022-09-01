@@ -8,6 +8,8 @@ const Button = styled.TouchableOpacity(
   background-color: ${props.backgroundColor};
   border-radius: 10px;
   justify-content: center;
+  border-width: 1px;
+  border-color: ${theme.colors.primary}
 `,
 );
 
