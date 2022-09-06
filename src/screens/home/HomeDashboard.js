@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import {
   HeaderCard,
   TextInputSearch,
@@ -13,8 +13,11 @@ import {FlatList} from 'react-native';
 import {Spacer} from '../../components/spacer';
 import {TouchableOpacity} from 'react-native';
 import StoreCard from '../../components/cards/StoreCard';
+import modeContext from '../../contexts/modeContext';
 
 const HomeDashboard = ({navigation}) => {
+  const {isDarkMode , mode} = useContext(modeContext);
+  
   const catagories = [
     {
       title: 'Beverages',
@@ -142,7 +145,10 @@ const HomeDashboard = ({navigation}) => {
   }
 
   return (
-    <Container stickyHeaderIndices={[0]} showsVerticalScrollIndicator={false}>
+    <Container
+      color={mode.backgroundColor}
+      stickyHeaderIndices={[0]}
+      showsVerticalScrollIndicator={false}>
       <HeaderContainer>
         <HeaderCard
           text="Home"
@@ -221,10 +227,10 @@ const HomeDashboard = ({navigation}) => {
 
 export default HomeDashboard;
 
-const Container = styled.ScrollView`
-  background-color: ${theme.colors.background};
-  flex: 1;
-`;
+const Container = styled.ScrollView({
+  flex: 1,
+  backgroundColor: props=>props.color,
+})
 
 const HeaderContainer = styled.View`
   background-color: ${theme.colors.primary};

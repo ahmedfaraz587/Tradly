@@ -1,45 +1,63 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import {theme} from '../../ui';
 import Entypo from 'react-native-vector-icons/Entypo';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {ScrollView, TouchableOpacity,View,Text} from 'react-native';
+import {
+  ScrollView,
+  TouchableOpacity,
+  View,
+  Text,
+  StyleSheet,
+} from 'react-native';
 import {appImages} from '../../utilities/assets';
 import StepIndicator from 'react-native-step-indicator';
 
 const CheckoutSuccess = ({navigation}) => {
-  
+  const [currentPage, setCurrentPage] = useState(1);
   const labels = [
-    'Cart',
-    'Delivery Address',
-    'Order Summary',
-    'Payment Method',
-    'Track',
+    {
+      title: 'Order Placed',
+      description: 'Order#123455 from Fashion Point',
+      date: '12/12/2020',
+      time: '12:00 PM',
+    },
+    {
+      title: 'Payment Confirmed',
+      description: 'Payment Confirmed Status',
+      date: '12/12/2020',
+      time: '12:00 PM',
+    },
+    {
+      title: 'Processed',
+      description: 'Order Processed Status',
+      date: '12/12/2020',
+      time: '12:00 PM',
+    },
+    {
+      title: 'Delivered',
+      description: 'Order Delivered Status',
+      date: '12/12/2020',
+      time: '12:00 PM',
+    },
   ];
   const customStyles = {
-    stepIndicatorSize: 25,
-    currentStepIndicatorSize: 30,
+    stepIndicatorSize: 13,
+    currentStepIndicatorSize: 20,
     separatorStrokeWidth: 2,
-    currentStepStrokeWidth: 3,
-    stepStrokeCurrentColor: '#fe7013',
-    stepStrokeWidth: 3,
-    stepStrokeFinishedColor: '#fe7013',
-    stepStrokeUnFinishedColor: '#aaaaaa',
-    separatorFinishedColor: '#fe7013',
-    separatorUnFinishedColor: '#aaaaaa',
-    stepIndicatorFinishedColor: '#fe7013',
-    stepIndicatorUnFinishedColor: '#ffffff',
-    stepIndicatorCurrentColor: '#ffffff',
-    stepIndicatorLabelFontSize: 13,
-    currentStepIndicatorLabelFontSize: 13,
-    stepIndicatorLabelCurrentColor: '#fe7013',
-    stepIndicatorLabelFinishedColor: '#ffffff',
-    stepIndicatorLabelUnFinishedColor: '#aaaaaa',
-    labelColor: '#999999',
+    currentStepStrokeWidth: 4,
+    stepStrokeCurrentColor: 'rgba(51, 144, 124,0.4)',
+    separatorFinishedColor: theme.colors.primary,
+    separatorUnFinishedColor: '#606A7B',
+    stepIndicatorFinishedColor: theme.colors.primary,
+    stepIndicatorUnFinishedColor: '#606A7B',
+    stepIndicatorCurrentColor: theme.colors.primary,
+    stepIndicatorLabelFontSize: 0,
+    currentStepIndicatorLabelFontSize: 0,
+    labelColor: '#666666',
     labelSize: 13,
-    currentStepLabelColor: '#fe7013',
+    labelAlign: 'flex-start',
   };
-
 
   return (
     <Container>
@@ -71,14 +89,43 @@ const CheckoutSuccess = ({navigation}) => {
           <TrackOrderContainer>
             <TrackOrderHeading>Track Order</TrackOrderHeading>
             <OrderId>ORDER ID - 12345 </OrderId>
+            <View style={{padding: 10, flex: 1}}>
+              <View style={styles.stepIndicator}>
+                <StepIndicator
+                  customStyles={customStyles}
+                  stepCount={4}
+                  direction="vertical"
+                  currentPosition={currentPage}
+                  labels={labels}
+                  renderLabel={({
+                    position,
+                    stepStatus,
+                    label,
+                    currentPosition,
+                  }) => {
+                    return (
+                      <View style={styles.labelContainer}>
+                        <View>
+                          <Text style={styles.labelTitle}>{label.title}</Text>
+                          <Text style={styles.labelDescription}>
+                            {label.description}
+                          </Text>
+                        </View>
+                        <View>
+                          <Text style={styles.labelDescription}>
+                            {label.date}
+                          </Text>
+                          <Text style={styles.labelDescription}>
+                            {label.time}
+                          </Text>
+                        </View>
+                      </View>
+                    );
+                  }}
+                />
+              </View>
+            </View>
           </TrackOrderContainer>
-          <StepIndicator
-            customStyles={customStyles}
-            // currentPosition={currentPosition}
-            labels={labels}
-            direction="vertical"
-            stepCount={10}
-          />
         </MainContainer>
       </ScrollView>
 
@@ -90,6 +137,35 @@ const CheckoutSuccess = ({navigation}) => {
 };
 
 export default CheckoutSuccess;
+
+const styles = StyleSheet.create({
+  stepIndicator: {
+    marginVertical: 10,
+    // paddingHorizontal: 25,
+  },
+  labelContainer: {
+    // flex:1,
+    width: '80%',
+    flexDirection: 'row',
+    marginTop: 20,
+    marginBottom: 20,
+    marginLeft: 15,
+    justifyContent: 'space-between',
+    alignItems:'center'
+  },
+  labelTitle: {
+    fontSize: theme.fontSize.xxsmallText_14,
+    fontFamily: theme.fontFamilies.largeText,
+    color: theme.colors.black,
+    marginBottom: 10,
+  },
+  labelDescription: {
+    fontSize: 10,
+    color: '#606A7B',
+    fontFamily: theme.fontFamilies.largeText,
+    marginBottom: 10,
+  },
+});
 
 const Container = styled.View({
   flex: 1,
@@ -196,19 +272,18 @@ const CartTopContainer = styled.View`
 const TrackOrderContainer = styled.View({
   marginTop: 15,
   backgroundColor: theme.colors.white,
-  padding:20
+  padding: 20,
 });
 
 const TrackOrderHeading = styled.Text({
-  color:theme.colors.black,
-  fontFamily:theme.fontFamilies.smallHeading,
-  fontSize:theme.fontSize.smallText_16,
-})
+  color: theme.colors.black,
+  fontFamily: theme.fontFamilies.smallHeading,
+  fontSize: theme.fontSize.smallText_16,
+});
 
 const OrderId = styled.Text({
-  color:'#606A7B',
-  fontSize:theme.fontSize.xxsmallText_14,
-  marginTop:8,
-  marginBottom:8
-  
-})
+  color: '#606A7B',
+  fontSize: theme.fontSize.xxsmallText_14,
+  marginTop: 8,
+  marginBottom: 8,
+});

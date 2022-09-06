@@ -1,13 +1,15 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import styled from 'styled-components';
 import {theme} from '../../ui';
 import {HeaderCard} from '../../components';
 import {Divider} from 'react-native-paper';
-import {TouchableOpacity} from 'react-native';
+import {Switch, TouchableOpacity, View} from 'react-native';
+import modeContext from '../../contexts/modeContext';
 
 const Profile = ({navigation}) => {
+  const {isDarkMode , setIsDarkMode , mode} = useContext(modeContext);
   return (
-    <Container>
+    <Container color={mode.backgroundColor}>
       <HeaderContainer>
         <HeaderCard
           text="Profile"
@@ -26,41 +28,46 @@ const Profile = ({navigation}) => {
           </NameContainer>
         </UserDetailContainer>
       </HeaderContainer>
-      <MainContainer>
+      <MainContainer color={mode.backgroundColor}>
         <TouchableOpacity>
-          <Text>Edit Profile</Text>
+          <Text textColor={mode.color}>Edit Profile</Text>
         </TouchableOpacity>
         <Divider />
         <TouchableOpacity>
-          <Text>Language & Currency</Text>
+          <Text textColor={mode.color}>Language & Currency</Text>
         </TouchableOpacity>
         <Divider />
         <TouchableOpacity>
-          <Text>Feedback</Text>
+          <Text textColor={mode.color}>Feedback</Text>
         </TouchableOpacity>
         <Divider />
         <TouchableOpacity>
-          <Text>Refer a Friend</Text>
+          <Text textColor={mode.color}>Refer a Friend</Text>
         </TouchableOpacity>
         <Divider />
         <TouchableOpacity>
-          <Text>Terms & Conditions</Text>
+          <Text textColor={mode.color}>Terms & Conditions</Text>
         </TouchableOpacity>
         <Divider />
         <TouchableOpacity>
           <Logout>Logout</Logout>
         </TouchableOpacity>
       </MainContainer>
+      <Switch
+        value={isDarkMode}
+        onValueChange={value => setIsDarkMode(value)}
+      />
+      <View style={{height: 50, backgroundColor: mode.backgroundColor}}></View>
     </Container>
   );
 };
 
 export default Profile;
 
-const Container = styled.View({
-  flex: 1,
-  backgroundColor: theme.colors.background,
-});
+const Container = styled.View`
+flex:1;
+background-color:${props => props.color};
+`;
 
 const HeaderContainer = styled.View({
   height: '45%',
@@ -107,7 +114,7 @@ const Name = styled.Text({
 
 const Contact = styled.Text({
   fontSize: theme.fontSize.xxsmallText_14,
-  color: theme.colors.white,
+  color: props=> props.textColor,
   fontFamily: theme.fontFamilies.largeText,
 });
 
@@ -116,7 +123,7 @@ const NameContainer = styled.View({
 });
 
 const MainContainer = styled.View({
-  backgroundColor: theme.colors.white,
+ backgroundColor:props => props.color,
   height: 266,
   marginTop: '-30%',
   borderRadius: 10,
@@ -126,7 +133,7 @@ const MainContainer = styled.View({
 
 const Text = styled.Text({
   fontSize: theme.fontSize.xxsmallText_14,
-  color: theme.colors.darkGrey50,
+  color: props =>props.textColor ,
   fontFamily: theme.fontFamilies.largeText,
   padding: 13,
   marginLeft: 5,

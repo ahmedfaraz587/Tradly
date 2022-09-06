@@ -1,8 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState,useContext, useEffect} from 'react';
 import styled from 'styled-components';
 import {theme} from '../../ui';
 import {SimpleButton, TextInputOutline, Spacer} from '../../components';
-import {TouchableOpacity} from 'react-native';
+import {Button, TouchableOpacity} from 'react-native';
+import {strings} from '../../../localization'
+import languageContext  from '../../contexts/languageContext'
+
 
 const Container = styled.View({
   flex: 1,
@@ -16,6 +19,7 @@ const SignupRow = styled.View({
   flexDirection: 'row',
   alignItem: 'center',
   justifyContent: 'center',
+  marginBottom:20
 });
 
 const Heading = styled.Text({
@@ -57,36 +61,57 @@ const Login = ({navigation}) => {
     // password:''
   });
 
+  const {setLan,lan} = useContext(languageContext);
+
+  useEffect(() => {
+    console.log('====================================');
+    console.log(lan);
+    console.log('====================================');
+  }, [lan])
+
   return (
     <Container>
-      <Heading>Welcome to tradly</Heading>
-      <NormalText>Login to your account</NormalText>
+      <Heading>{strings.welcome}</Heading>
+      <NormalText>{strings.loginToAccount}</NormalText>
       <TextInputOutline
-        placeholder="Email/Mobile Number"
+        placeholder={strings.placeholderEmail}
         onChangeText={email => setformData({...formData, email: email})}
       />
       <Spacer.Column numberOfSpaces={5} />
       <TextInputOutline
-        placeholder="Password"
+        placeholder={strings.placeholderPassword}
         onChangeText={pass => setformData({...formData, password: pass})}
         secureTextEntry={true}
       />
       <Spacer.Column numberOfSpaces={7} />
       <SimpleButton
-        text="Login"
+        text={strings.login}
         buttonColor={theme.colors.white}
         textColor={theme.colors.primary}
         onPress={() => navigation.navigate('BottomNavigation')}
       />
       <ForgotPasswordButton>
-        <ForgotText>Forgot your password?</ForgotText>
+        <ForgotText>{strings.forgetPassword}</ForgotText>
       </ForgotPasswordButton>
       <SignupRow>
-        <ForgotText>Don't have an account?</ForgotText>
+        <ForgotText>{strings.dontHaveAccount}</ForgotText>
         <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
-          <SmallHeading>Sign up</SmallHeading>
+          <SmallHeading>{strings.signup}</SmallHeading>
         </TouchableOpacity>
       </SignupRow>
+      {lan != 'en-US' ? (
+        <Button
+          title="change language to english"
+          style={{paddingTop: 30}}
+          onPress={() => setLan('en-US')}
+        />
+      ) : (
+        <Button
+          title="change language to Spanish"
+          style={{paddingTop: 30}}
+          onPress={() => setLan('es')}
+        />
+      )}
     </Container>
   );
 };

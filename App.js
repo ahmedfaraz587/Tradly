@@ -1,23 +1,35 @@
 import 'react-native-gesture-handler';
-import React from 'react';
-import styled from 'styled-components/native';
+import React, {useContext, useEffect, useState} from 'react';
 import MainStack from './src/navigation/MainStack';
 import {NavigationContainer} from '@react-navigation/native';
-import { LogBox } from 'react-native';
-
-const Container = styled.View`
-  flex: 1;
-  background-color: blue;
-`;
-
+import ModeContext from './src/contexts/modeContext';
+import {LogBox} from 'react-native';
+import {mode} from './src/contexts/mode';
+import languageContext from './src/contexts/languageContext';
+import { strings } from './localization';
 const App = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [lan, setLan] = useState('');
+
+  useEffect(()=>{
+    strings.setLanguage(lan);
+    console.log('[lang ---->>>]', lan);
+  },[lan])
+
   LogBox.ignoreAllLogs();
   return (
-    <Container>
-      <NavigationContainer>
-        <MainStack />
-      </NavigationContainer>
-    </Container>
+    <languageContext.Provider value={{lan,setLan}}>
+      <ModeContext.Provider
+        value={{
+          isDarkMode,
+          setIsDarkMode,
+          mode: isDarkMode ? mode.dark : mode.light,
+        }}>
+          <NavigationContainer>
+            <MainStack />
+          </NavigationContainer>
+      </ModeContext.Provider>
+    </languageContext.Provider>
   );
 };
 

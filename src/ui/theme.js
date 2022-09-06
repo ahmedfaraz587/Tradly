@@ -1,6 +1,19 @@
 import {Dimensions, Platform} from 'react-native';
 import 'styled-components';
 
+
+const Theme = () => {
+
+  function name() {
+    return 'Faraz'
+  }
+  return (
+    null
+  );
+}
+
+export default Theme;
+
 const colors = {
   white: '#ffffff',
   black: '#000000',

@@ -15,7 +15,7 @@ const MainStack = () => {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator
-      initialRouteName="Splash"
+      initialRouteName="Auth"
       screenOptions={{
         headerShown: false,
       }}>
