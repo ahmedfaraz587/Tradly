@@ -5,14 +5,17 @@ import {theme} from '../../ui';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {RadioButton, Divider} from 'react-native-paper';
 import {ScrollView, TouchableOpacity} from 'react-native';
+import {useTranslation} from 'react-i18next';
 
 const Payment = ({navigation, route}) => {
+  const {t} = useTranslation();
   const [checked, setChecked] = useState('Debit/Credit card');
+
   return (
     <Container>
       <ScrollView>
         <HeaderTitleCard
-          title="Payment Option"
+          title={t('payment.title')}
           onPress={() => navigation.goBack()}
         />
         <PaymentContainer>
@@ -20,7 +23,7 @@ const Payment = ({navigation, route}) => {
             <TouchableOpacity onPress={() => navigation.navigate('AddCard')}>
               <AntDesign name="plus" size={30} color="rgba(0, 0, 0, 0.2)" />
             </TouchableOpacity>
-            <CardText>Add payment method</CardText>
+            <CardText>{t('payment.addPaymentMethod')}</CardText>
           </CardContainer>
         </PaymentContainer>
         <RadioButtonContainer>
@@ -29,7 +32,7 @@ const Payment = ({navigation, route}) => {
             status={checked === 'Debit/Credit card' ? 'checked' : 'unchecked'}
             onPress={() => setChecked('Debit/Credit card')}
           />
-          <RadioButtonText>Debit/Credit card</RadioButtonText>
+          <RadioButtonText>{t('payment.debit/CreditCard')}</RadioButtonText>
         </RadioButtonContainer>
         <RadioButtonContainer>
           <RadioButton
@@ -37,7 +40,7 @@ const Payment = ({navigation, route}) => {
             status={checked === 'NetBanking' ? 'checked' : 'unchecked'}
             onPress={() => setChecked('NetBanking')}
           />
-          <RadioButtonText>NetBanking</RadioButtonText>
+          <RadioButtonText>{t('payment.netBanking')}</RadioButtonText>
         </RadioButtonContainer>
         <RadioButtonContainer>
           <RadioButton
@@ -45,7 +48,7 @@ const Payment = ({navigation, route}) => {
             status={checked === 'CashOnDelivery' ? 'checked' : 'unchecked'}
             onPress={() => setChecked('CashOnDelivery')}
           />
-          <RadioButtonText>Cash on Delivery</RadioButtonText>
+          <RadioButtonText>{t('payment.cashOnDelivery')}</RadioButtonText>
         </RadioButtonContainer>
         <RadioButtonContainer>
           <RadioButton
@@ -53,32 +56,35 @@ const Payment = ({navigation, route}) => {
             status={checked === 'Wallet' ? 'checked' : 'unchecked'}
             onPress={() => setChecked('Wallet')}
           />
-          <RadioButtonText>Wallet</RadioButtonText>
+          <RadioButtonText>{t('payment.wallet')}</RadioButtonText>
         </RadioButtonContainer>
         <AddressView>
           <AddressContainer>
             <Address>
-              Delivery to {route.params?.storeName} , {route.params?.zipcode}
+              {t('payment.deliveryTo')} {route.params?.storeName} ,{' '}
+              {route.params?.zipcode}
             </Address>
             <Address>
               {route.params?.city}, {route.params?.state}
             </Address>
           </AddressContainer>
           <SmallButton
-            buttonTitle="change"
+            buttonTitle={t('payment.change')}
             backgroundColor={theme.colors.primary}
             textColor={theme.colors.white}
           />
         </AddressView>
         <PriceDetailContainer>
-          <PriceDetailTitle>Price Detail</PriceDetailTitle>
+          <PriceDetailTitle>{t('payment.priceDetail')}</PriceDetailTitle>
           <PriceDetailTableContainer>
-            <PriceDetailText>price (1 item)</PriceDetailText>
+            <PriceDetailText>
+              {t('payment.price')} (1 {t('payment.item')})
+            </PriceDetailText>
             <PriceDetailText>$10</PriceDetailText>
           </PriceDetailTableContainer>
           <PriceDetailTableContainer>
-            <PriceDetailText>Delivery fee</PriceDetailText>
-            <PriceDetailText>info</PriceDetailText>
+            <PriceDetailText>{t('payment.deliveryFee')}</PriceDetailText>
+            <PriceDetailText>{t('payment.info')}</PriceDetailText>
           </PriceDetailTableContainer>
           <Divider
             style={{
@@ -89,14 +95,14 @@ const Payment = ({navigation, route}) => {
             }}
           />
           <PriceDetailTableContainer>
-            <TotalPriceText>Total amount</TotalPriceText>
+            <TotalPriceText>{t('payment.totalAmount')}</TotalPriceText>
             <TotalPriceText>$10</TotalPriceText>
           </PriceDetailTableContainer>
         </PriceDetailContainer>
       </ScrollView>
       <ButtonContainer>
         <SimpleButton
-          text="Checkout"
+          text={t('payment.checkout')}
           buttonColor={theme.colors.primary}
           textColor={theme.colors.white}
           onPress={() => navigation.navigate('CheckoutSuccess')}

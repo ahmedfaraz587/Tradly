@@ -14,8 +14,10 @@ import {Spacer} from '../../components/spacer';
 import {TouchableOpacity} from 'react-native';
 import StoreCard from '../../components/cards/StoreCard';
 import modeContext from '../../contexts/modeContext';
+import { useTranslation } from 'react-i18next';
 
 const HomeDashboard = ({navigation}) => {
+  const {t} = useTranslation()
   const {isDarkMode , mode} = useContext(modeContext);
   
   const catagories = [
@@ -151,11 +153,11 @@ const HomeDashboard = ({navigation}) => {
       showsVerticalScrollIndicator={false}>
       <HeaderContainer>
         <HeaderCard
-          text="Home"
+          text={t('home.title')}
           onFavoritePress={() => navigation.navigate('Wishlist')}
           onCartPress={() => navigation.navigate('CheckoutNavigation')}
         />
-        <TextInputSearch placeholder="Search" />
+        <TextInputSearch placeholder={t('home.search')} />
       </HeaderContainer>
       <CatagoryView>
         <FlatList
@@ -167,9 +169,9 @@ const HomeDashboard = ({navigation}) => {
       </CatagoryView>
       <Spacer.Column numberOfSpaces={3} />
       <ProductNameView>
-        <ProductCatagoryName>New products</ProductCatagoryName>
+        <ProductCatagoryName>{t('home.newProduct')}</ProductCatagoryName>
         <SmallButton
-          buttonTitle="See all"
+          buttonTitle={t('home.seeAll')}
           onPress={() => alert('see all pressed')}
           backgroundColor={theme.colors.primary}
           textColor={theme.colors.white}
@@ -185,9 +187,9 @@ const HomeDashboard = ({navigation}) => {
       </ProductsView>
       <Spacer.Column numberOfSpaces={3} />
       <ProductNameView>
-        <ProductCatagoryName>Popular products</ProductCatagoryName>
+        <ProductCatagoryName>{t('home.popularProduct')}</ProductCatagoryName>
         <SmallButton
-          buttonTitle="See all"
+          buttonTitle={t('home.seeAll')}
           onPress={() => alert('see all pressed')}
           backgroundColor={theme.colors.primary}
           textColor={theme.colors.white}
@@ -203,9 +205,9 @@ const HomeDashboard = ({navigation}) => {
       </ProductsView>
       <FollowStoreBackground>
         <ProductNameView>
-          <StoreToFollowText>Store to follow</StoreToFollowText>
+          <StoreToFollowText>{t('home.storeToFollow')}</StoreToFollowText>
           <SmallButton
-            buttonTitle="View all"
+            buttonTitle={t('home.viewAll')}
             onPress={() => alert('see all pressed')}
             backgroundColor={theme.colors.white}
             textColor={theme.colors.black}

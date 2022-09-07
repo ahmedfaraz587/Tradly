@@ -6,45 +6,47 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import {View, Platform, ScrollView, TouchableOpacity} from 'react-native';
 import Tags from 'react-native-tags';
 import Entypo from 'react-native-vector-icons/Entypo';
+import {useTranslation} from 'react-i18next';
 
 const AddProduct = ({navigation}) => {
+  const {t} = useTranslation();
   return (
     <Container behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <HeaderTitleCard
-        title="Add Product"
+        title={t('addProduct.title')}
         onPress={() => navigation.goBack()}
       />
       <ScrollView>
         <ImagePickerContainer>
           <TouchableOpacity style={{alignItems: 'center'}}>
             <AntDesign name="plus" size={30} color="rgba(0, 0, 0, 0.2)" />
-            <AddPhotoText>Add photos</AddPhotoText>
-            <SizeText>1600 x 1200 for hi res</SizeText>
+            <AddPhotoText>{t('addProduct.addPhotos')}</AddPhotoText>
+            <SizeText>{t('addProduct.photoSize')}</SizeText>
           </TouchableOpacity>
         </ImagePickerContainer>
-        <NoOfPicText>Max. 4 photos per product</NoOfPicText>
+        <NoOfPicText>{t('addProduct.maxPhotos')}</NoOfPicText>
         <MainContainer>
-          <Label>Product Name</Label>
+          <Label>{t('addProduct.productName')}</Label>
           <TextInput />
-          <Label>Catagory Product</Label>
+          <Label>{t('addProduct.catagoryProduct')}</Label>
           <TextInput />
           <RowContainer>
             <View style={{width: 80}}>
-              <Label>Price</Label>
+              <Label>{t('addProduct.price')}</Label>
               <TextInput maxLength={4} />
             </View>
             <View style={{width: 80}}>
-              <Label>Offer Price</Label>
+              <Label>{t('addProduct.offerPrice')}</Label>
               <TextInput maxLength={4} />
             </View>
           </RowContainer>
-          <Label>Location Details</Label>
+          <Label>{t('addProduct.locationDetails')}</Label>
           <TextInput />
-          <Label>Product Description</Label>
+          <Label>{t('addProduct.productDescription')}</Label>
           <TextInput multiline />
-          <Label>Price type</Label>
+          <Label>{t('addProduct.priceType')}</Label>
           <TextInput />
-          <Label>Additional Details</Label>
+          <Label>{t('addProduct.additionalDetails')}</Label>
           <Tags
             onChangeTags={tags => console.log(tags)}
             inputStyle={{backgroundColor: 'white'}}
@@ -74,7 +76,7 @@ const AddProduct = ({navigation}) => {
 
       <ButtonContainer>
         <SimpleButton
-          text="Add"
+          text={t('addProduct.add')}
           buttonColor={theme.colors.primary}
           textColor={theme.colors.white}
         />

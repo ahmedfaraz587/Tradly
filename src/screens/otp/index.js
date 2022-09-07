@@ -7,7 +7,7 @@ const OTPNav = () => {
      const Stack = createStackNavigator();
      return (
        <Stack.Navigator
-         initialRouteName="SemdOTP"
+         initialRouteName="SendOTP"
          screenOptions={{
            headerShown: false,
          }}>

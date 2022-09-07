@@ -9,10 +9,12 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MyStore from '../screens/store/MyStore';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {theme} from '../ui';
+import { useTranslation } from 'react-i18next';
 
 const Tab = createBottomTabNavigator();
 
 const BottomNavigation = () => {
+  const {t} = useTranslation()
   return (
     <Tab.Navigator
       screenOptions={{
@@ -29,7 +31,7 @@ const BottomNavigation = () => {
         name="Home"
         component={HomeNav}
         options={{
-          tabBarLabel: 'Home',
+          tabBarLabel: t('bottomTab.home'),
           headerShown: false,
           tabBarLabelStyle: {
             fontSize: 10,
@@ -45,7 +47,7 @@ const BottomNavigation = () => {
         name="Browse"
         component={Browse}
         options={{
-          tabBarLabel: 'Browse',
+          tabBarLabel: t('bottomTab.browse'),
           headerShown: false,
           tabBarLabelStyle: {
             fontSize: 10,
@@ -61,7 +63,7 @@ const BottomNavigation = () => {
         name="MyStore"
         component={MyStore}
         options={{
-          tabBarLabel: 'Store',
+          tabBarLabel: t('bottomTab.store'),
           headerShown: false,
           tabBarLabelStyle: {
             fontSize: 10,
@@ -77,7 +79,7 @@ const BottomNavigation = () => {
         name="OrderHistory"
         component={OrderHistory}
         options={{
-          tabBarLabel: 'Order History',
+          tabBarLabel: t('bottomTab.orderHistory'),
           headerShown: false,
           tabBarLabelStyle: {
             fontSize: 10,
@@ -93,7 +95,7 @@ const BottomNavigation = () => {
         name="Profile"
         component={Profile}
         options={{
-          tabBarLabel: 'Profile',
+          tabBarLabel: t('bottomTab.profile'),
           headerShown: false,
           tabBarLabelStyle: {
             fontSize: 10,

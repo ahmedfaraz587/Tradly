@@ -4,20 +4,22 @@ import {theme} from '../../ui';
 import {HeaderCard, SmallButton} from '../../components';
 import {View} from 'react-native';
 import {appImages} from '../../utilities/assets'
+import { useTranslation } from 'react-i18next';
 
 const OrderHistory = ({navigation}) => {
+  const {t} = useTranslation()
   return (
     <Container>
       <HeaderContainer>
         <HeaderCard
-          text="Order History"
+          text={t('orderHistory.title')}
           onFavoritePress={() => navigation.navigate('Wishlist')}
           onCartPress={() => navigation.navigate('CheckoutNavigation')}
         />
       </HeaderContainer>
       <MainContainer>
         <HeadingContainer>
-          <Heading>Transactions</Heading>
+          <Heading>{t('orderHistory.transaction')}</Heading>
           <DateView>
             <Date>Jan 2019</Date>
           </DateView>
@@ -33,7 +35,7 @@ const OrderHistory = ({navigation}) => {
           <SmallButton
             backgroundColor={theme.colors.primary}
             textColor={theme.colors.white}
-            buttonTitle="Delivered"
+            buttonTitle={t('orderHistory.Delivered')}
           />
         </CardContainer>
         <CardContainer>
@@ -47,7 +49,7 @@ const OrderHistory = ({navigation}) => {
           <SmallButton
             backgroundColor={theme.colors.white}
             textColor={theme.colors.primary}
-            buttonTitle="Order placed"
+            buttonTitle={t('orderHistory.orderPlaced')}
           />
         </CardContainer>
         <CardContainer>
@@ -61,7 +63,7 @@ const OrderHistory = ({navigation}) => {
           <SmallButton
             backgroundColor={theme.colors.white}
             textColor={theme.colors.primary}
-            buttonTitle="Payment confirmed"
+            buttonTitle={t('orderHistory.paymentConfirmed')}
           />
         </CardContainer>
         <CardContainer>
@@ -75,7 +77,7 @@ const OrderHistory = ({navigation}) => {
           <SmallButton
             backgroundColor={theme.colors.white}
             textColor={theme.colors.primary}
-            buttonTitle="Processed"
+            buttonTitle={t('orderHistory.processed')}
           />
         </CardContainer>
       </MainContainer>

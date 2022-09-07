@@ -5,14 +5,16 @@ import {HeaderCard} from '../../components';
 import {Divider} from 'react-native-paper';
 import {Switch, TouchableOpacity, View} from 'react-native';
 import modeContext from '../../contexts/modeContext';
+import { useTranslation } from 'react-i18next';
 
 const Profile = ({navigation}) => {
+  const {t} = useTranslation()
   const {isDarkMode , setIsDarkMode , mode} = useContext(modeContext);
   return (
     <Container color={mode.backgroundColor}>
       <HeaderContainer>
         <HeaderCard
-          text="Profile"
+          text={t('profile.title')}
           onFavoritePress={() => navigation.navigate('Wishlist')}
           onCartPress={() => navigation.navigate('CheckoutNavigation')}
         />
@@ -30,27 +32,27 @@ const Profile = ({navigation}) => {
       </HeaderContainer>
       <MainContainer color={mode.backgroundColor}>
         <TouchableOpacity>
-          <Text textColor={mode.color}>Edit Profile</Text>
+          <Text textColor={mode.color}>{t('profile.editProfile')}</Text>
         </TouchableOpacity>
         <Divider />
         <TouchableOpacity>
-          <Text textColor={mode.color}>Language & Currency</Text>
+          <Text textColor={mode.color}>{t('profile.language&Currency')}</Text>
         </TouchableOpacity>
         <Divider />
         <TouchableOpacity>
-          <Text textColor={mode.color}>Feedback</Text>
+          <Text textColor={mode.color}>{t('profile.feedback')}</Text>
         </TouchableOpacity>
         <Divider />
         <TouchableOpacity>
-          <Text textColor={mode.color}>Refer a Friend</Text>
+          <Text textColor={mode.color}>{t('profile.referAFriend')}</Text>
         </TouchableOpacity>
         <Divider />
         <TouchableOpacity>
-          <Text textColor={mode.color}>Terms & Conditions</Text>
+          <Text textColor={mode.color}>{t('profile.terms&Conditions')}</Text>
         </TouchableOpacity>
         <Divider />
         <TouchableOpacity>
-          <Logout>Logout</Logout>
+          <Logout>{t('profile.logout')}</Logout>
         </TouchableOpacity>
       </MainContainer>
       <Switch
@@ -114,7 +116,7 @@ const Name = styled.Text({
 
 const Contact = styled.Text({
   fontSize: theme.fontSize.xxsmallText_14,
-  color: props=> props.textColor,
+  color: theme.colors.white,
   fontFamily: theme.fontFamilies.largeText,
 });
 

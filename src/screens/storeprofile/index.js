@@ -7,8 +7,10 @@ import {View, FlatList} from 'react-native';
 import Tags from 'react-native-tags';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {appImages, avatars} from '../../utilities/assets';
+import { useTranslation } from 'react-i18next';
 
 const StoreProfile = ({navigation}) => {
+  const {t} = useTranslation() 
   const products = [
     {
       productImage: appImages.chickenBroast,
@@ -78,7 +80,7 @@ const StoreProfile = ({navigation}) => {
             </NameContainer>
           </View>
           <SmallButton
-            buttonTitle="follow"
+            buttonTitle={t('storeProfile.follow')}
             backgroundColor={theme.colors.primary}
             textColor={theme.colors.white}
           />
@@ -101,11 +103,11 @@ const StoreProfile = ({navigation}) => {
       </TopContainer>
       <FollowerContainer>
         <FollowerView>
-          <Name>Total Followers</Name>
+          <Name>{t('storeProfile.totalFollowers')}</Name>
           <Name>0</Name>
         </FollowerView>
         <FollowerView>
-          <Name>Total Products</Name>
+          <Name>{t('storeProfile.totalProducts')}</Name>
           <Name>0</Name>
         </FollowerView>
       </FollowerContainer>

@@ -4,8 +4,10 @@ import {HeaderTitleCard, SimpleButton} from '../../components';
 import styled from 'styled-components';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {Platform, ScrollView} from 'react-native';
+import {useTranslation} from 'react-i18next';
 
 const AddAddress = ({navigation}) => {
+  const {t} = useTranslation();
   const [addressDetail, setAddressDetail] = useState({});
   const buttonPress = () => {
     // {
@@ -28,7 +30,7 @@ const AddAddress = ({navigation}) => {
     <Container behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <ScrollView>
         <HeaderTitleCard
-          title="Add a new address"
+          title={t('addAddress.title')}
           onPress={() => navigation.goBack()}
         />
         <AddNewAddressContainer>
@@ -37,34 +39,36 @@ const AddAddress = ({navigation}) => {
             size={20}
             color={theme.colors.primary}
           />
-          <CurrentLocationText>Use current location</CurrentLocationText>
+          <CurrentLocationText>
+            {t('addAddress.useCurrentLocation')}
+          </CurrentLocationText>
         </AddNewAddressContainer>
         <MainContainer>
-          <Label>Name</Label>
+          <Label>{t('addAddress.name')}</Label>
           <Input
             onChangeText={e => setAddressDetail({...addressDetail, name: e})}
           />
-          <Label>Phone</Label>
+          <Label>{t('addAddress.phone')}</Label>
           <Input
             onChangeText={e =>
               setAddressDetail({...addressDetail, phoneNumber: e})
             }
           />
-          <Label>Street address</Label>
+          <Label>{t('addAddress.streetAddress')}</Label>
           <Input
             onChangeText={e =>
               setAddressDetail({...addressDetail, streetAddress: e})
             }
           />
-          <Label>City</Label>
+          <Label>{t('addAddress.city')}</Label>
           <Input
             onChangeText={e => setAddressDetail({...addressDetail, city: e})}
           />
-          <Label>State</Label>
+          <Label>{t('addAddress.state')}</Label>
           <Input
             onChangeText={e => setAddressDetail({...addressDetail, state: e})}
           />
-          <Label>Zipcode</Label>
+          <Label>{t('addAddress.zipCode')}</Label>
           <Input
             onChangeText={e => setAddressDetail({...addressDetail, zipcode: e})}
           />
@@ -74,7 +78,7 @@ const AddAddress = ({navigation}) => {
         <SimpleButton
           textColor={theme.colors.white}
           buttonColor={theme.colors.primary}
-          text="Save"
+          text={t('addAddress.save')}
           onPress={buttonPress}
         />
       </ButtonContainer>

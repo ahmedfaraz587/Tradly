@@ -13,15 +13,17 @@ import {appImages, avatars} from '../../utilities/assets';
 import {ScrollView, TouchableOpacity, View} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {useTranslation} from 'react-i18next';
 
 const MyStore = ({navigation}) => {
+  const {t} = useTranslation();
   const [store, setStore] = useState(true);
   const [product, setProduct] = useState(true);
   return (
     <Container>
       <HeaderContainer>
         <HeaderCard
-          text="My Store"
+          text={t('store.title')}
           onFavoritePress={() => navigation.navigate('Wishlist')}
           onCartPress={() => navigation.navigate('CheckoutNavigation')}
         />
@@ -33,13 +35,13 @@ const MyStore = ({navigation}) => {
             <StoreName>Tradly Store</StoreName>
             <RowView>
               <SmallButton
-                buttonTitle="Edit Store"
+                buttonTitle={t('store.editStore')}
                 backgroundColor={theme.colors.white}
                 textColor={theme.colors.primary}
               />
               <Margin />
               <SmallButton
-                buttonTitle="View Store"
+                buttonTitle={t('store.viewStore')}
                 backgroundColor={theme.colors.primary}
                 textColor={theme.colors.white}
                 onPress={() => navigation.navigate('StoreProfile')}
@@ -47,16 +49,16 @@ const MyStore = ({navigation}) => {
             </RowView>
             <Divider />
             <TouchableOpacity onPress={() => alert('remove store')}>
-              <RemoveStore>Remove Store</RemoveStore>
+              <RemoveStore>{t('store.removeStore')}</RemoveStore>
             </TouchableOpacity>
           </StoreContainer>
           {product ? (
             <View style={{padding: 15}}>
               <TextInputSearch
                 placeholderTextColor={theme.colors.lightGrey}
-                placeholder="Search Product"
+                placeholder={t('store.searchProduct')}
               />
-              <ProductName>Products</ProductName>
+              <ProductName>{t('store.products')}</ProductName>
               <ProductView>
                 {/* <ScrollView horizontal={false}> */}
                 <MarginContainer>
@@ -102,7 +104,7 @@ const MyStore = ({navigation}) => {
                         size={30}
                         color={theme.colors.darkGrey50}
                       />
-                      <AddProductText>Add Product</AddProductText>
+                      <AddProductText>{t('store.addProduct')}</AddProductText>
                     </TouchableOpacity>
                   </AddImageContainer>
                 </MarginContainer>
@@ -111,7 +113,7 @@ const MyStore = ({navigation}) => {
             </View>
           ) : (
             <View>
-              <SmallTitle>You dont have a product</SmallTitle>
+              <SmallTitle>{t('store.dontHaveProduct')}</SmallTitle>
               <ButtonContainer>
                 <SimpleButton
                   text="Add product"
@@ -128,10 +130,10 @@ const MyStore = ({navigation}) => {
       ) : (
         <MainContainer>
           <StoreImage source={appImages.mystore} resizeMode="contain" />
-          <DontHaveStoreTitle>You Dont Have a Store</DontHaveStoreTitle>
+          <DontHaveStoreTitle>{t('store.dontHaveStore')}</DontHaveStoreTitle>
           <ButtonContainer>
             <SimpleButton
-              text="Create Store"
+              text={t('store.createStore')}
               buttonColor={theme.colors.primary}
               textColor={theme.colors.white}
               onPress={() =>

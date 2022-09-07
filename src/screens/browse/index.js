@@ -4,8 +4,11 @@ import styled from 'styled-components';
 import {theme} from '../../ui';
 import {FlatList, View} from 'react-native';
 import {appImages, avatars} from '../../utilities/assets';
+import { useTranslation } from 'react-i18next';
 
 const Browse = props => {
+
+  const {t} = useTranslation()
   const products = [
     {
       productImage: appImages.strawberryPunch,
@@ -76,11 +79,11 @@ const Browse = props => {
     <Container>
       <HeaderContainer>
         <HeaderCard
-          text="Browse"
+          text={t('browse.title')}
           onFavoritePress={() => props.navigation.navigate('Wishlist')}
           onCartPress={() => props.navigation.navigate('CheckoutNavigation')}
         />
-        <TextInputSearch placeholder="Search Product" />
+        <TextInputSearch placeholder={t('browse.searchProduct')} />
       </HeaderContainer>
       <ProductContainer>
           <FlatList data={products} renderItem={renderProduct} numColumns={2} />

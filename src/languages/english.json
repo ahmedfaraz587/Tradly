@@ -1,0 +1,234 @@
+{
+  "translation": {
+    "welcome": "Welcome ahmed",
+    "login": {
+      "welcome": "Welcome to tradly",
+      "loginToAccount": "Login to your account",
+      "placeholderEmail": "Email/Mobile Number",
+      "placeholderPassword": "Password",
+      "login": "Login",
+      "forgetPassword": "Forgot your password?",
+      "dontHaveAccount": "Don't have an account?",
+      "signup": "Sign up"
+    },
+    "signup": {
+      "welcome": "Welcome to Tradly",
+      "signupToAccount": "Sign up to your account",
+      "placeholderEmail": "Email/Mobile Number",
+      "placeholderPassword": "Password",
+      "placeholderConfirmPassword": "Re-enter Password",
+      "placeholderFirstName": "First Name",
+      "placeholderLastName": "Last Name",
+      "signup": "Sign up",
+      "alreadyHaveAccount": "Already have an account?",
+      "signin": "Sign in"
+    },
+    "onBoardingScreen1": {
+      "title": "Donate, Inverst & Support infrastructure projects"
+    },
+    "onBoardingScreen2": {
+      "title": "Connecting NGOs, Social Enterprises with Communities"
+    },
+    "onBoardingScreen3": {
+      "title": "Enpowering Artisans, Farmers & Micro Business"
+    },
+    "sendOtp": {
+      "title": "Verify your phone number",
+      "description": "We have sent you a verification code on your phone number",
+      "placeholder": "Enter phone number",
+      "loginWithSocial": "Or Login with Social network",
+      "next": "Next"
+    },
+    "phoneVerification": {
+      "title": "Enter your OTP code here",
+      "DidntReceiveCode": "Didn't you received any code?",
+      "Resend": "Resend new code",
+      "verify": "Verify"
+    },
+    "home": {
+      "title": "Home",
+      "search": "Search",
+      "newProduct": "New Products",
+      "seeAll": "See all",
+      "popularProduct": "Popular Products",
+      "storeToFollow": "Stores to follow",
+      "viewAll": "View all",
+      "follow": "Follow"
+    },
+    "browse": {
+      "title": "Browse",
+      "searchProduct": "Search Products"
+    },
+    "store": {
+      "title": "My Store",
+      "searchStore": "Search Stores",
+      "editStore": "Edit Store",
+      "viewStore": "View Store",
+      "removeStore": "Remove Store",
+      "searchProduct": "Search Products",
+      "products": "Products",
+      "addProduct": "Add Product",
+      "dontHaveStore": "You don't have a store",
+      "dontHaveProduct": "You don't have any product",
+      "createStore": "Create Store"
+    },
+    "createStore": {
+      "title": "My Store",
+      "description": "This information is used to set up your shop",
+      "storeName": "Store Name",
+      "storeWebAddress": "Store Web Address",
+      "storeDescription": "Store Description",
+      "storeType": "Store Type",
+      "address": "Address",
+      "city": "City",
+      "country": "Country",
+      "courierName": "Courier Name",
+      "tagline": "Tagline",
+      "create": "Create"
+    },
+    "storeProfile": {
+      "follow": "Follow",
+      "groceries": "Groceries",
+      "vegetable": "Vegetable",
+      "totalFollowers": "Total Followers",
+      "totalProducts": "Total Products"
+    },
+    "addProduct": {
+      "title": "Add Product",
+      "addPhotos": "Add Photos",
+      "photoSize": "1600 x 1200 for hi res",
+      "maxPhotos": "Max 4 photos per product",
+      "productName": "Product Name",
+      "catagoryProduct": "Catagory Product",
+      "price": "Price",
+      "offerPrice": "Offer Price",
+      "locationDetails": "Location Details",
+      "productDescription": "Product Description",
+      "priceType": "Price type",
+      "additionalDetails": "Additional Details",
+      "add": "Add"
+    },
+    "editProduct": {
+      "title": "Edit Product",
+      "addPhotos": "Add Photos",
+      "photoSize": "1600 x 1200 for hi res",
+      "maxPhotos": "Max 4 photos per product",
+      "productName": "Product Name",
+      "catagoryProduct": "Catagory Product",
+      "price": "Price",
+      "offerPrice": "Offer Price",
+      "locationDetails": "Location Details",
+      "productDescription": "Product Description",
+      "priceType": "Price type",
+      "additionalDetails": "Additional Details",
+      "editProduct": "Edit Product"
+    },
+    "orderHistory": {
+      "title": "Order History",
+      "transaction": "Transaction",
+      "Delivered": "Delivered",
+      "orderPlaced": "Order Placed",
+      "paymentConfirmed": "Payment Confirmed",
+      "processed": "Processed"
+    },
+    "profile": {
+      "title": "Profile",
+      "editProfile": "Edit Profile",
+      "language&Currency": "Language & Currency",
+      "feedback": "Feedback",
+      "referAFriend": "Refer a Friend",
+      "terms&Conditions": "Terms & Conditions",
+      "logout": "Logout"
+    },
+    "wishlist": {
+      "title": "Wishlist",
+      "noProduct": "No Product in Wishlist"
+    },
+    "myCart": {
+      "title": "My Cart",
+      "deliveryTo": "Delivery to",
+      "change": "Change",
+      "noProduct": "No Product in Cart",
+      "+addNewAddress": "+Add New Address",
+      "remove": "Remove",
+      "priceDetail": "Price Detail",
+      "price": "Price",
+      "deliveryFee": "Delivery Fee",
+      "totalAmount": "Total amount",
+      "continueToPayment": "Continue to Payment"
+    },
+    "addAddress": {
+      "title": "Add a new address",
+      "useCurrentLocation": "Use current location",
+      "name": "Name",
+      "phone": "Phone",
+      "streetAddress": "Street Address",
+      "city": "City",
+      "state": "State",
+      "zipCode": "zipcode",
+      "save": "Save"
+    },
+    "payment": {
+      "title": "Payment Option",
+      "addPaymentMethod": "Add Payment Method",
+      "cashOnDelivery": "Cash on Delivery",
+      "netBanking": "NetBanking",
+      "wallet": "Wallet",
+      "debit/CreditCard": "Debit/Credit Card",
+      "deliveryTo": "Delivery to",
+      "change": "Change",
+      "priceDetail": "Price Detail",
+      "price": "price",
+      "item": "item",
+      "deliveryFee": "Delivery Fee",
+      "info": "info",
+      "totalAmount": "Total amount",
+      "checkout": "Checkout"
+    },
+    "checkoutSuccess": {
+      "title": "Order Details",
+      "thanksForOrder": "Thanks for order",
+      "trackOrder": "Track Order",
+      "orderID": "order ID",
+      "orderPlaced": "Order Placed",
+      "paymentConfirmed": "Payment Confirmed",
+      "processed": "Processed",
+      "delivered": "Delivered",
+      "backToHome": "Back to Home",
+      "paymentConfirmedStatus": "Payment Confirmed Status",
+      "orderProcessedStatus": "Order Processed Status",
+      "orderDeliveredStatus": "Order Delivered Status"
+    },
+    "productDetail": {
+      "condition": "Condition",
+      "new": "New",
+      "used": "Used",
+      "organic": "Organic",
+      "catagories": "Catagories",
+      "location": "Location",
+      "priceType": "Price Type",
+      "fixed": "Fixed",
+      "negotiable": "Negotiable",
+      "additionalDetails": "Additional Details",
+      "deliveryDetails": "Delivery Details",
+      "homeDelivery": "Home Delivery",
+      "cashOnDelivery": "Cash on Delivery",
+      "addToCart": "Add to Cart"
+    },
+    "addCard": {
+      "title": "Add card",
+      "cardNumber": "Card Number",
+      "name": "Name",
+      "expiryDate": "Expiry Date",
+      "cvv": "CVV",
+      "addCreditCard": "Add Credit Card"
+    },
+    "bottomTab": {
+      "home": "Home",
+      "browse": "Browse",
+      "store": "Store",
+      "orderHistory":"Order History",
+      "profile": "Profile"
+    }
+  }
+}

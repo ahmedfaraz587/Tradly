@@ -1,4 +1,5 @@
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 import {View, Platform} from 'react-native';
 import styled from 'styled-components';
 import {HeaderTitleCard, SimpleButton} from '../../components';
@@ -6,24 +7,28 @@ import {theme} from '../../ui';
 import {appImages} from '../../utilities/assets';
 
 const AddCard = ({navigation, route}) => {
+  const {t} = useTranslation();
   return (
     <Container behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-      <HeaderTitleCard title="Add card" onPress={() => navigation.goBack()} />
+      <HeaderTitleCard
+        title={t('addCard.title')}
+        onPress={() => navigation.goBack()}
+      />
       <CardImageView>
         <AtmCard source={appImages.atm} />
       </CardImageView>
       <MainContainer>
-        <Label>Card Number</Label>
+        <Label>{t('addCard.cardNumber')}</Label>
         <Input onChangeText={() => {}} />
-        <Label>Name</Label>
+        <Label>{t('addCard.name')}</Label>
         <Input onChangeText={() => {}} />
         <RowContainer>
           <View>
-            <Label>Expiry Dates</Label>
+            <Label>{t('addCard.expiryDate')}</Label>
             <Input onChangeText={() => {}} />
           </View>
           <View>
-            <Label>CVC</Label>
+            <Label>{t('addCard.cvv')}</Label>
             <Input
               maxLength={3}
               onChangeText={() => {}}
@@ -34,7 +39,7 @@ const AddCard = ({navigation, route}) => {
       </MainContainer>
       <ButtonView>
         <SimpleButton
-          text="Add Credit Card"
+          text={t('addCard.addCreditCard')}
           buttonColor={theme.colors.primary}
           textColor={theme.colors.white}
           onPress={() => {

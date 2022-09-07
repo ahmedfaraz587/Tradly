@@ -3,6 +3,7 @@ import Onboarding from 'react-native-onboarding-swiper';
 import styled from 'styled-components';
 import {theme} from '../../ui';
 import {appImages} from '../../utilities/assets';
+import {useTranslation} from 'react-i18next';
 
 const Image = styled.Image({
   width: 250,
@@ -10,7 +11,8 @@ const Image = styled.Image({
 });
 
 const OnBoarding = ({navigation}) => {
-  const [buttonTitle, setButtonTitle] = React.useState('Next');
+  // const [buttonTitle, setButtonTitle] = React.useState('Next');
+  const {t} = useTranslation();
 
   return (
     <Onboarding
@@ -23,10 +25,6 @@ const OnBoarding = ({navigation}) => {
       }}
       showSkip={false}
       onDone={() => navigation.navigate('Auth')}
-      // NextButtonComponent={() => (
-      //   <SimpleButton text={buttonTitle} buttonColor={theme.colors.primary} />
-      // )}
-
       pages={[
         {
           backgroundColor: '#fff',

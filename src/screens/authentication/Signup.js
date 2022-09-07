@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {theme} from '../../ui/theme';
 import {TouchableOpacity} from 'react-native';
 import {SimpleButton, TextInputOutline, Spacer} from '../../components';
+import { useTranslation } from 'react-i18next';
 
 const Container = styled.View({
   flex: 1,
@@ -51,48 +52,49 @@ const SmallHeading = styled.Text`
 
 const Signup = ({navigation}) => {
   const [formData, setformData] = useState({});
+  const {t} = useTranslation()
 
   return (
     <Container>
-      <Heading>Welcome to Tradly</Heading>
-      <NormalText>Signup to your account</NormalText>
+      <Heading>{t('signup.welcome')}</Heading>
+      <NormalText>{t('signup.signupToAccount')} </NormalText>
       <TextInputOutline
-        placeholder="First name"
+        placeholder={t('signup.placeholderFirstName')}
         onChangeText={e => setformData({...formData, firstName: e})}
       />
       <Spacer.Column numberOfSpaces={5} />
       <TextInputOutline
-        placeholder="Last name"
+        placeholder={t('signup.placeholderLastName')}
         onChangeText={e => setformData({...formData, lastName: e})}
       />
       <Spacer.Column numberOfSpaces={5} />
       <TextInputOutline
-        placeholder="Email/Mobile Number"
+        placeholder={t('signup.placeholderEmail')}
         onChangeText={email => setformData({...formData, email: email})}
       />
       <Spacer.Column numberOfSpaces={5} />
       <TextInputOutline
-        placeholder="Password"
+        placeholder={t('signup.placeholderPassword')}
         onChangeText={p => setformData({...formData, password: p})}
         secureTextEntry={true}
       />
       <Spacer.Column numberOfSpaces={5} />
       <TextInputOutline
-        placeholder="Re-enter Password"
+        placeholder={t('signup.placeholderConfirmPassword')}
         onChangeText={p => setformData({...formData, re_password: p})}
         secureTextEntry={true}
       />
       <Spacer.Column numberOfSpaces={6.5} />
       <SimpleButton
-        text="Sign up"
+        text={t('signup.signup')}
         buttonColor={theme.colors.white}
         textColor={theme.colors.primary}
         onPress={() => navigation.navigate('OTPNav')}
       />
       <SigninRow>
-        <HaveAccountText>Already have an account?</HaveAccountText>
+        <HaveAccountText>{t('signup.alreadyHaveAccount')}</HaveAccountText>
         <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-          <SmallHeading>Sign in</SmallHeading>
+          <SmallHeading>{t('signup.signin')}</SmallHeading>
         </TouchableOpacity>
       </SigninRow>
     </Container>

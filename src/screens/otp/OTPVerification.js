@@ -4,6 +4,7 @@ import {SimpleButton, Spacer} from '../../components';
 import {theme} from '../../ui';
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import {StyleSheet, TouchableOpacity} from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 const Container = styled.View({
   flex: 1,
@@ -34,31 +35,48 @@ const NormalText = styled.Text`
   margin-bottom: 10;
 `;
 
-const OTPVerification = ({navigation}) => {
+const OTPVerification = ({navigation, route}) => {
+  
   const [otp, setOtp] = useState('');
+  const {t} = useTranslation()
+  // const {confirm} = route.params;
+
+  // async
+   function confirmCode() {
+    navigation.navigate('BottomNavigation');
+    // try {
+    //   const con = await confirm.confirm(otp);
+    //   if (con) {
+    //     navigation.navigate('BottomNavigation');
+    //     console.log('OTP Verified');
+    //   }
+    // } catch (error) {
+    //   console.log('Invalid code');
+    // }
+  }
+
   return (
     <Container>
-      <Heading>Phone Verification</Heading>
-      <NormalText>Enter your OTP code here</NormalText>
+      <NormalText>{t('phoneVerification.title')}</NormalText>
       <OTPView>
         <OTPInputView
           pinCount={6}
           codeInputFieldStyle={styles.codeInputFieldStyle}
-          onCodeChanged={e => setOtp(e)}
+          onCodeFilled={e => setOtp(e)}
           keyboardType="number-pad"
         />
       </OTPView>
       <Spacer.Column numberOfSpaces={10} />
-      <NormalText>Didn't you received any code?</NormalText>
+      <NormalText>{t('phoneVerification.DidntReceiveCode')}</NormalText>
       <TouchableOpacity>
-        <NormalText>Resent new code</NormalText>
+        <NormalText>{t('phoneVerification.Resend')}</NormalText>
       </TouchableOpacity>
       <Spacer.Column numberOfSpaces={10} />
       <SimpleButton
-        text="Verify"
+        text={t('phoneVerification.verify')}
         buttonColor={theme.colors.white}
         textColor={theme.colors.primary}
-        onPress={() => navigation.navigate('BottomNavigation')}
+        onPress={confirmCode}
       />
     </Container>
   );

@@ -4,9 +4,11 @@ import {theme} from '../../ui';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {SimpleButton, SmallButton} from '../../components';
-import { ScrollView } from 'react-native';
+import {ScrollView} from 'react-native';
+import {useTranslation} from 'react-i18next';
 
 const ProductDetail = ({route, navigation}) => {
+  const {t} = useTranslation();
   return (
     <Container>
       <ScrollView>
@@ -58,27 +60,30 @@ const ProductDetail = ({route, navigation}) => {
         </ProductExplanation>
         <TableView>
           <TableRow>
-            <PropertyName>Conditon</PropertyName>
-            <PropertyDetail>Organic</PropertyDetail>
+            <PropertyName>{t('productDetail.condition')}</PropertyName>
+            <PropertyDetail>{t('productDetail.organic')}</PropertyDetail>
           </TableRow>
           <TableRow>
-            <PropertyName>Price Type</PropertyName>
-            <PropertyDetail>Fixed</PropertyDetail>
+            <PropertyName>{t('productDetail.priceType')}</PropertyName>
+            <PropertyDetail>{t('productDetail.fixed')}</PropertyDetail>
           </TableRow>
           <TableRow>
-            <PropertyName>Catagories</PropertyName>
+            <PropertyName>{t('productDetail.catagories')}</PropertyName>
             <PropertyDetail>Beverages</PropertyDetail>
           </TableRow>
           <TableRow>
-            <PropertyName>Location</PropertyName>
+            <PropertyName>{t('productDetail.location')}</PropertyName>
             <PropertyDetail>Lahore</PropertyDetail>
           </TableRow>
         </TableView>
-        <AdditionalDetailsText>Additional Details</AdditionalDetailsText>
+        <AdditionalDetailsText>
+          {t('productDetail.additionalDetails')}
+        </AdditionalDetailsText>
         <TableRow>
-          <PropertyName>Delivery details</PropertyName>
+          <PropertyName>{t('productDetail.deliveryDetails')}</PropertyName>
           <PropertyDetail>
-            Home Delivery Available, Cash On Delivery
+            {t('productDetail.homeDelivery')},{' '}
+            {t('productDetail.cashOnDelivery')}
           </PropertyDetail>
         </TableRow>
       </ScrollView>
@@ -87,7 +92,7 @@ const ProductDetail = ({route, navigation}) => {
         <SimpleButton
           buttonColor={theme.colors.primary}
           textColor={theme.colors.white}
-          text="Add To Cart"
+          text={t('productDetail.addToCart')}
         />
       </CartButtonView>
     </Container>
@@ -195,32 +200,31 @@ const CartButtonView = styled.View`
   width: 100%;
 `;
 
-const TableView =styled.View`
-margin-top: 10px;
-background-color: ${theme.colors.white};
-padding: 20px;
-`
+const TableView = styled.View`
+  margin-top: 10px;
+  background-color: ${theme.colors.white};
+  padding: 20px;
+`;
 const TableRow = styled.View`
-flex-direction: row;
-margin-top: 10px;
-margin-bottom: 10px;
-
-`
+  flex-direction: row;
+  margin-top: 10px;
+  margin-bottom: 10px;
+`;
 const PropertyName = styled.Text`
-font-family: ${theme.fontFamilies.text};
-color:${theme.colors.darkGrey80};
-margin-left: 25px;
-width: 130px;
-`
+  font-family: ${theme.fontFamilies.text};
+  color: ${theme.colors.darkGrey80};
+  margin-left: 25px;
+  width: 130px;
+`;
 const PropertyDetail = styled.Text`
   font-family: ${theme.fontFamilies.text};
   color: ${theme.colors.darkGrey80};
   width: 50%;
 `;
 
-const AdditionalDetailsText= styled.Text`
-color:${theme.colors.black};
-font-size: ${theme.fontSize.buttonText_18};
-font-family:${theme.fontFamilies.smallHeading};
-padding:15px;
-`
+const AdditionalDetailsText = styled.Text`
+  color: ${theme.colors.black};
+  font-size: ${theme.fontSize.buttonText_18};
+  font-family: ${theme.fontFamilies.smallHeading};
+  padding: 15px;
+`;

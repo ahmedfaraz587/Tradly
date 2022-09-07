@@ -5,8 +5,10 @@ import {theme} from '../../ui';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {appImages, avatars} from '../../utilities/assets';
 import {ProductCard, HeaderTitleCard} from '../../components';
+import { useTranslation } from 'react-i18next';
 
 const Wishlist = ({navigation}) => {
+  const {t} = useTranslation()
   const products = [
     {
       productImage: appImages.strawberryPunch,
@@ -61,7 +63,7 @@ const Wishlist = ({navigation}) => {
 
   return (
     <Container>
-      <HeaderTitleCard title="Wishlist" onPress={() => navigation.goBack()} />
+      <HeaderTitleCard title={t('wishlist.title')} onPress={() => navigation.goBack()} />
       <AlignCenter>
         <FlatList
           data={products}

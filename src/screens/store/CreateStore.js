@@ -5,36 +5,38 @@ import {HeaderTitleCard, SimpleButton} from '../../components';
 import {theme} from '../../ui';
 import {appImages} from '../../utilities/assets';
 import Tags from 'react-native-tags';
+import {useTranslation} from 'react-i18next';
 
 const CreateStore = ({navigation}) => {
+  const {t} = useTranslation();
   return (
     <Container>
-      <HeaderTitleCard title="My Store" onPress={() => navigation.goBack()} />
+      <HeaderTitleCard
+        title={t('createStore.title')}
+        onPress={() => navigation.goBack()}
+      />
       <ScrollView>
         <StoreImage source={appImages.mystore} resizeMode="contain" />
-        <Textt>This information is used to set up your shop</Textt>
+        <Textt>{t('createStore.description')} </Textt>
         <FormContainer>
-          <Label>StoreName</Label>
+          <Label>{t('createStore.storeName')}</Label>
           <Input />
-          <Label>Store Web Address</Label>
+          <Label>{t('createStore.storeWebAddress')}</Label>
           <Input />
-          <Label>Store Description</Label>
+          <Label>{t('createStore.storeDescription')}</Label>
           <Input />
-          <Label>Store Type</Label>
+          <Label>{t('createStore.storeType')}</Label>
           <Input />
-          <Label>Address</Label>
+          <Label>{t('createStore.address')}</Label>
           <Input />
-          <Label>City</Label>
+          <Label>{t('createStore.city')}</Label>
           <Input />
-          <Label>Country</Label>
+          <Label>{t('createStore.country')}</Label>
           <Input />
-          <Label>Courier Name</Label>
+          <Label>{t('createStore.courierName')}</Label>
           <Input />
-          <Label>Tagline</Label>
+          <Label>{t('createStore.tagline')}</Label>
           <Tags
-            textInputProps={{
-              placeholder: 'Any type of animal',
-            }}
             onChangeTags={tags => console.log(tags)}
             onTagPress={(index, tagLabel, event, deleted) =>
               console.log(

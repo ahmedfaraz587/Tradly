@@ -7,12 +7,14 @@ import {View, Platform, ScrollView, TouchableOpacity} from 'react-native';
 import Tags from 'react-native-tags';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {appImages} from '../../utilities/assets';
+import {useTranslation} from 'react-i18next';
 
 const EditProduct = ({navigation}) => {
+  const {t} = useTranslation();
   return (
     <Container behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <HeaderTitleCard
-        title="Edit Product"
+        title={t('editProduct.title')}
         onPress={() => navigation.goBack()}
       />
       <ScrollView>
@@ -20,8 +22,8 @@ const EditProduct = ({navigation}) => {
           <ImagePickerContainer>
             <TouchableOpacity style={{alignItems: 'center'}}>
               <AntDesign name="plus" size={30} color="rgba(0, 0, 0, 0.2)" />
-              <AddPhotoText>Add photos</AddPhotoText>
-              <SizeText>1600 x 1200 for hi res</SizeText>
+              <AddPhotoText>{t('editProduct.addPhotos')}</AddPhotoText>
+              <SizeText>{t('editProduct.photoSize')}</SizeText>
             </TouchableOpacity>
           </ImagePickerContainer>
           <Image source={appImages.lemonade}>
@@ -35,29 +37,29 @@ const EditProduct = ({navigation}) => {
             </TouchableOpacity>
           </Image>
         </ImageContainer>
-        <NoOfPicText>Max. 4 photos per product</NoOfPicText>
+        <NoOfPicText>{t('editProduct.maxPhotos')}</NoOfPicText>
         <MainContainer>
-          <Label>Product Name</Label>
+          <Label>{t('editProduct.productName')}</Label>
           <TextInput />
-          <Label>Catagory Product</Label>
+          <Label>{t('editProduct.catagoryProduct')}</Label>
           <TextInput />
           <RowContainer>
             <View style={{width: 80}}>
-              <Label>Price</Label>
+              <Label>{t('editProduct.price')}</Label>
               <TextInput maxLength={4} />
             </View>
             <View style={{width: 80}}>
-              <Label>Offer Price</Label>
+              <Label>{t('editProduct.offerPrice')}</Label>
               <TextInput maxLength={4} />
             </View>
           </RowContainer>
-          <Label>Location Details</Label>
+          <Label>{t('editProduct.locationDetails')}</Label>
           <TextInput />
-          <Label>Product Description</Label>
+          <Label>{t('editProduct.productDescription')}</Label>
           <TextInput multiline />
-          <Label>Price type</Label>
+          <Label>{t('editProduct.priceType')}</Label>
           <TextInput />
-          <Label>Additional Details</Label>
+          <Label>{t('editProduct.additionalDetails')}</Label>
           <Tags
             onChangeTags={tags => console.log(tags)}
             inputStyle={{backgroundColor: 'white'}}
@@ -87,7 +89,7 @@ const EditProduct = ({navigation}) => {
 
       <ButtonContainer>
         <SimpleButton
-          text="Edit Product"
+          text={t('editProduct.editProduct')}
           buttonColor={theme.colors.primary}
           textColor={theme.colors.white}
         />

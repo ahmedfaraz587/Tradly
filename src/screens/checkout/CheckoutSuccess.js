@@ -12,31 +12,34 @@ import {
 } from 'react-native';
 import {appImages} from '../../utilities/assets';
 import StepIndicator from 'react-native-step-indicator';
+import {useTranslation} from 'react-i18next';
 
 const CheckoutSuccess = ({navigation}) => {
+  const {t} = useTranslation();
+
   const [currentPage, setCurrentPage] = useState(1);
   const labels = [
     {
-      title: 'Order Placed',
+      title: t('checkoutSuccess.orderPlaced'),
       description: 'Order#123455 from Fashion Point',
       date: '12/12/2020',
       time: '12:00 PM',
     },
     {
-      title: 'Payment Confirmed',
-      description: 'Payment Confirmed Status',
+      title: t('checkoutSuccess.paymentConfirmed'),
+      description: t('checkoutSuccess.paymentConfirmedStatus'),
       date: '12/12/2020',
       time: '12:00 PM',
     },
     {
-      title: 'Processed',
-      description: 'Order Processed Status',
+      title: t('checkoutSuccess.processed'),
+      description: t('checkoutSuccess.orderProcessedStatus'),
       date: '12/12/2020',
       time: '12:00 PM',
     },
     {
-      title: 'Delivered',
-      description: 'Order Delivered Status',
+      title: t('checkoutSuccess.delivered'),
+      description: t('checkoutSuccess.orderDeliveredStatus'),
       date: '12/12/2020',
       time: '12:00 PM',
     },
@@ -63,14 +66,14 @@ const CheckoutSuccess = ({navigation}) => {
     <Container>
       <ScrollView>
         <HeaderContainer>
-          <HeaderTitle>Order Details</HeaderTitle>
+          <HeaderTitle>{t('checkoutSuccess.title')}</HeaderTitle>
           <TouchableOpacity>
             <Entypo name="cross" size={35} color={theme.colors.white} />
           </TouchableOpacity>
         </HeaderContainer>
         <MainContainer>
           <DoneImage source={appImages.done} />
-          <ThanksText>Thanks for order</ThanksText>
+          <ThanksText>{t('checkoutSuccess.thanksForOrder')}</ThanksText>
           <CartItemView>
             <CartTopContainer>
               <ImageContainer source={appImages.egg} />
@@ -87,8 +90,10 @@ const CheckoutSuccess = ({navigation}) => {
             </CartTopContainer>
           </CartItemView>
           <TrackOrderContainer>
-            <TrackOrderHeading>Track Order</TrackOrderHeading>
-            <OrderId>ORDER ID - 12345 </OrderId>
+            <TrackOrderHeading>
+              {t('checkoutSuccess.trackOrder')}
+            </TrackOrderHeading>
+            <OrderId>{t('checkoutSuccess.orderID')} - 12345 </OrderId>
             <View style={{padding: 10, flex: 1}}>
               <View style={styles.stepIndicator}>
                 <StepIndicator
@@ -130,7 +135,7 @@ const CheckoutSuccess = ({navigation}) => {
       </ScrollView>
 
       <BackToHomeButton onPress={() => navigation.navigate('BottomNavigation')}>
-        <BackToHome>Back to home</BackToHome>
+        <BackToHome>{t('checkoutSuccess.backToHome')}</BackToHome>
       </BackToHomeButton>
     </Container>
   );
@@ -151,7 +156,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginLeft: 15,
     justifyContent: 'space-between',
-    alignItems:'center'
+    alignItems: 'center',
   },
   labelTitle: {
     fontSize: theme.fontSize.xxsmallText_14,

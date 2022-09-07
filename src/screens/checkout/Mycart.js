@@ -6,23 +6,29 @@ import {TouchableOpacity} from 'react-native';
 import {Divider} from 'react-native-paper';
 import {appImages} from '../../utilities/assets';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {useTranslation} from 'react-i18next';
 
 const Mycart = ({navigation, route}) => {
+  const {t} = useTranslation();
   return (
     <Container>
-      <HeaderTitleCard title="My Cart" onPress={() => navigation.goBack()} />
+      <HeaderTitleCard
+        title={t('myCart.title')}
+        onPress={() => navigation.goBack()}
+      />
       {route.params ? (
         <AddressView>
           <AddressContainer>
             <Address>
-              Delivery to {route.params.storeName} , {route.params.zipcode}
+              {t('myCart.deliveryTo')} {route.params.storeName} ,{' '}
+              {route.params.zipcode}
             </Address>
             <Address>
               {route.params.city}, {route.params.state}
             </Address>
           </AddressContainer>
           <SmallButton
-            buttonTitle="change"
+            buttonTitle={t('myCart.change')}
             backgroundColor={theme.colors.primary}
             textColor={theme.colors.white}
           />
@@ -30,7 +36,7 @@ const Mycart = ({navigation, route}) => {
       ) : (
         <AddNewAddressView>
           <TouchableOpacity onPress={() => navigation.navigate('AddAddress')}>
-            <AddNewAddressText>+Add new address</AddNewAddressText>
+            <AddNewAddressText>{t('myCart.+addNewAddress')} </AddNewAddressText>
           </TouchableOpacity>
         </AddNewAddressView>
       )}
@@ -56,17 +62,17 @@ const Mycart = ({navigation, route}) => {
           }}
         />
         <TouchableOpacity onPress={() => alert('remove')}>
-          <RemoveText>Remove</RemoveText>
+          <RemoveText>{t('myCart.remove')} </RemoveText>
         </TouchableOpacity>
       </CartItemView>
       <PriceDetailContainer>
-        <PriceDetailTitle>Price Detail</PriceDetailTitle>
+        <PriceDetailTitle>{t('myCart.priceDetail')}</PriceDetailTitle>
         <PriceDetailTableContainer>
-          <PriceDetailText>price (1 item)</PriceDetailText>
+          <PriceDetailText>{t('myCart.price')} (1 item)</PriceDetailText>
           <PriceDetailText>$10</PriceDetailText>
         </PriceDetailTableContainer>
         <PriceDetailTableContainer>
-          <PriceDetailText>Delivery fee</PriceDetailText>
+          <PriceDetailText>{t('myCart.deliveryFee')} </PriceDetailText>
           <PriceDetailText>info</PriceDetailText>
         </PriceDetailTableContainer>
         <Divider
@@ -78,7 +84,7 @@ const Mycart = ({navigation, route}) => {
           }}
         />
         <PriceDetailTableContainer>
-          <TotalPriceText>Total amount</TotalPriceText>
+          <TotalPriceText>{t('myCart.totalAmount')} </TotalPriceText>
           <TotalPriceText>$10</TotalPriceText>
         </PriceDetailTableContainer>
       </PriceDetailContainer>
@@ -87,14 +93,13 @@ const Mycart = ({navigation, route}) => {
           <SimpleButton
             textColor={theme.colors.white}
             buttonColor={theme.colors.primary}
-            text="Continue to payment"
+            text={t('myCart.continueToPayment')}
             onPress={() =>
               navigation.navigate('Payment', {
                 storeName: route.params.storeName,
                 zipcode: route.params.zipcode,
                 city: route.params.city,
                 state: route.params.state,
-                
               })
             }
           />
@@ -102,7 +107,7 @@ const Mycart = ({navigation, route}) => {
           <SimpleButton
             textColor={theme.colors.white}
             buttonColor={theme.colors.primary}
-            text="Continue to payment"
+            text={t('myCart.continueToPayment')}
             disabled={true}
           />
         )}
