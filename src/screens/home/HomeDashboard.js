@@ -148,7 +148,7 @@ const HomeDashboard = ({navigation}) => {
 
   return (
     <Container
-      color={mode.backgroundColor}
+      // color={mode.backgroundColor}
       stickyHeaderIndices={[0]}
       showsVerticalScrollIndicator={false}>
       <HeaderContainer>
@@ -231,7 +231,7 @@ export default HomeDashboard;
 
 const Container = styled.ScrollView({
   flex: 1,
-  backgroundColor: props=>props.color,
+  backgroundColor: theme.colors.background,
 })
 
 const HeaderContainer = styled.View`

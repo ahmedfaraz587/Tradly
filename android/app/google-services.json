@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "899796682303-48t4ma96ddutdrokvqkmoo5ag9232cj6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tradly",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
           "client_id": "899796682303-kumpgeck3m1hl93femh4siedarrstn50.apps.googleusercontent.com",
           "client_type": 3
         }

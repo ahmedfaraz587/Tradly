@@ -1,18 +1,19 @@
-import React,{useContext} from 'react';
+import React, {useContext} from 'react';
 import styled from 'styled-components';
 import {theme} from '../../ui';
 import {HeaderCard} from '../../components';
 import {Divider} from 'react-native-paper';
 import {Switch, TouchableOpacity, View} from 'react-native';
 import modeContext from '../../contexts/modeContext';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
+import auth from '@react-native-firebase/auth';
 
 const Profile = ({navigation}) => {
-  const {t} = useTranslation()
-  const {isDarkMode , setIsDarkMode , mode} = useContext(modeContext);
+  const {t} = useTranslation();
+  const {isDarkMode, setIsDarkMode, mode} = useContext(modeContext);
   return (
     <Container color={mode.backgroundColor}>
-      <HeaderContainer>
+      <HeaderContainer backgroundColor={mode.primary}>
         <HeaderCard
           text={t('profile.title')}
           onFavoritePress={() => navigation.navigate('Wishlist')}
@@ -30,28 +31,37 @@ const Profile = ({navigation}) => {
           </NameContainer>
         </UserDetailContainer>
       </HeaderContainer>
-      <MainContainer color={mode.backgroundColor}>
+      <MainContainer color={mode.foregroundColor}>
         <TouchableOpacity>
-          <Text textColor={mode.color}>{t('profile.editProfile')}</Text>
+          <Text textColor={mode.textColor}>{t('profile.editProfile')}</Text>
         </TouchableOpacity>
         <Divider />
         <TouchableOpacity>
-          <Text textColor={mode.color}>{t('profile.language&Currency')}</Text>
+          <Text textColor={mode.textColor}>
+            {t('profile.language&Currency')}
+          </Text>
         </TouchableOpacity>
         <Divider />
         <TouchableOpacity>
-          <Text textColor={mode.color}>{t('profile.feedback')}</Text>
+          <Text textColor={mode.textColor}>{t('profile.feedback')}</Text>
         </TouchableOpacity>
         <Divider />
         <TouchableOpacity>
-          <Text textColor={mode.color}>{t('profile.referAFriend')}</Text>
+          <Text textColor={mode.textColor}>{t('profile.referAFriend')}</Text>
         </TouchableOpacity>
         <Divider />
         <TouchableOpacity>
-          <Text textColor={mode.color}>{t('profile.terms&Conditions')}</Text>
+          <Text textColor={mode.textColor}>
+            {t('profile.terms&Conditions')}
+          </Text>
         </TouchableOpacity>
         <Divider />
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>
+            auth()
+              .signOut()
+              .then(() => console.log('User signed out!'))
+          }>
           <Logout>{t('profile.logout')}</Logout>
         </TouchableOpacity>
       </MainContainer>
@@ -59,7 +69,6 @@ const Profile = ({navigation}) => {
         value={isDarkMode}
         onValueChange={value => setIsDarkMode(value)}
       />
-      <View style={{height: 50, backgroundColor: mode.backgroundColor}}></View>
     </Container>
   );
 };
@@ -67,13 +76,13 @@ const Profile = ({navigation}) => {
 export default Profile;
 
 const Container = styled.View`
-flex:1;
-background-color:${props => props.color};
+  flex: 1;
+  background-color: ${props => props.color};
 `;
 
 const HeaderContainer = styled.View({
   height: '45%',
-  backgroundColor: theme.colors.primary,
+  backgroundColor: props => props.backgroundColor,
   padding: 15,
 });
 
@@ -125,17 +134,18 @@ const NameContainer = styled.View({
 });
 
 const MainContainer = styled.View({
- backgroundColor:props => props.color,
+  backgroundColor: props => props.color,
   height: 266,
   marginTop: '-30%',
   borderRadius: 10,
   width: '90%',
   alignSelf: 'center',
+  elevation: 2,
 });
 
 const Text = styled.Text({
   fontSize: theme.fontSize.xxsmallText_14,
-  color: props =>props.textColor ,
+  color: props => props.textColor,
   fontFamily: theme.fontFamilies.largeText,
   padding: 13,
   marginLeft: 5,

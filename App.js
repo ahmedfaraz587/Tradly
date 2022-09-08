@@ -5,10 +5,35 @@ import {NavigationContainer} from '@react-navigation/native';
 import ModeContext from './src/contexts/modeContext';
 import {LogBox} from 'react-native';
 import {mode} from './src/contexts/mode';
-import i18n from './src/languages/i18n';
+import AuthStack from './src/navigation/AuthStack';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth';
 
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
+
+  function onAuthStateChanged(user) {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  }
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
+
+  
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId:
+        '899796682303-kumpgeck3m1hl93femh4siedarrstn50.apps.googleusercontent.com',
+    });
+  }, []);
+
+
+  if (initializing) return null;
 
   LogBox.ignoreAllLogs();
   return (
@@ -19,7 +44,7 @@ const App = () => {
         mode: isDarkMode ? mode.dark : mode.light,
       }}>
       <NavigationContainer>
-        <MainStack />
+        {user ? <MainStack /> : <AuthStack />}
       </NavigationContainer>
     </ModeContext.Provider>
   );
